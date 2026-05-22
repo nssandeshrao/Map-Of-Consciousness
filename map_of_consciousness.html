@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Map of Consciousness</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #12121a;
+    --border: rgba(255,255,255,0.07);
+    --text: #e8e6f0;
+    --muted: rgba(232,230,240,0.45);
+    --victim: #c0392b;
+    --victim-dim: #4a1515;
+    --empower: #c47d1a;
+    --empower-dim: #4a2e08;
+    --realize: #1a9e75;
+    --realize-dim: #083d2c;
+    --spirit: #7f77dd;
+    --spirit-dim: #2a2660;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 60px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 400;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+  header p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 6px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .legend-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  .main {
+    width: 100%;
+    max-width: 860px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  /* Bar chart */
+  .chart-wrap {
+    position: relative;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 20px 36px;
+    overflow: hidden;
+  }
+  .grid-lines {
+    position: absolute;
+    inset: 28px 20px 36px;
+    pointer-events: none;
+  }
+  .grid-line {
+    position: absolute;
+    left: 0; right: 0;
+    height: 1px;
+    background: var(--border);
+  }
+  .grid-line-label {
+    position: absolute;
+    right: calc(100% + 6px);
+    font-size: 9px;
+    color: var(--muted);
+    transform: translateY(-50%);
+    white-space: nowrap;
+  }
+
+  .bars {
+    position: relative;
+    height: 340px;
+    display: flex;
+    align-items: flex-end;
+    gap: 4px;
+    z-index: 2;
+  }
+  .bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    position: relative;
+    height: 100%;
+  }
+  .bar {
+    width: 100%;
+    border-radius: 4px 4px 0 0;
+    transition: all 0.25s ease;
+    opacity: 0.35;
+    position: relative;
+  }
+  .bar-col.active .bar {
+    opacity: 1;
+  }
+  .bar-col:hover .bar {
+    opacity: 0.8;
+    transform: scaleY(1.02);
+    transform-origin: bottom;
+  }
+  .bar-col.active:hover .bar {
+    opacity: 1;
+    transform: none;
+  }
+  .bar-log {
+    margin-top: 6px;
+    font-size: 9px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  /* Cursor line */
+  .cursor-line {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    height: 1.5px;
+    z-index: 5;
+    pointer-events: none;
+    transition: top 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .cursor-line::before {
+    content: '';
+    position: absolute;
+    left: 0; right: 0;
+    height: 100%;
+    background: white;
+    opacity: 0.9;
+  }
+  .cursor-label {
+    position: absolute;
+    right: 0;
+    top: -18px;
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    color: white;
+    background: var(--surface);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 0.5px solid rgba(255,255,255,0.2);
+    white-space: nowrap;
+  }
+  .cursor-triangle {
+    position: absolute;
+    left: -8px;
+    top: -4px;
+    width: 0; height: 0;
+    border-top: 4.5px solid transparent;
+    border-bottom: 4.5px solid transparent;
+    border-right: 8px solid white;
+  }
+
+  /* Detail card */
+  .detail-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+    transition: border-color 0.3s;
+  }
+  .detail-top {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .detail-log {
+    font-family: 'DM Serif Display', serif;
+    font-size: 52px;
+    line-height: 1;
+    color: var(--text);
+    font-style: italic;
+  }
+  .detail-level {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text);
+  }
+  .detail-mode {
+    font-size: 11px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-family: 'DM Mono', monospace;
+    margin-left: auto;
+  }
+  .drive-quote {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    font-family: 'DM Serif Display', serif;
+    margin-bottom: 20px;
+    padding-left: 12px;
+    border-left: 2px solid var(--border);
+  }
+
+  .happiness-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .happ-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    min-width: 76px;
+  }
+  .happ-track {
+    flex: 1;
+    height: 4px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .happ-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.4s ease;
+  }
+  .happ-pct {
+    font-size: 12px;
+    color: var(--text);
+    min-width: 34px;
+    text-align: right;
+  }
+
+  .attrs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 20px;
+  }
+  @media(max-width:560px){
+    .attrs { grid-template-columns: repeat(2,1fr); }
+  }
+  .attr-cell { display: flex; flex-direction: column; gap: 3px; }
+  .attr-key {
+    font-size: 10px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+  }
+  .attr-val {
+    font-size: 13px;
+    color: var(--text);
+  }
+
+  /* Nav */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+  }
+  .nav-btn {
+    background: var(--surface);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    color: var(--text);
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    letter-spacing: 0.04em;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.22); }
+  .nav-btn:active { transform: scale(0.97); }
+  .nav-count {
+    font-size: 11px;
+    color: var(--muted);
+    min-width: 52px;
+    text-align: center;
+  }
+  .key-hint {
+    font-size: 10px;
+    color: var(--muted);
+    text-align: center;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Map of Consciousness</h1>
+  <p>Dr. David R. Hawkins · Scale of Human Awareness</p>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--victim)"></div>Victim / Abuser</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--empower)"></div>Self-Empowerment</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--realize)"></div>Self-Realization</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--spirit)"></div>Spiritual</div>
+</div>
+
+<div class="main">
+  <div class="chart-wrap" id="chartWrap">
+    <div class="cursor-line" id="cursorLine">
+      <div class="cursor-triangle"></div>
+      <div class="cursor-label" id="cursorLabel">200 · Courage</div>
+    </div>
+    <div class="bars" id="barsEl"></div>
+  </div>
+
+  <div class="detail-card" id="detailCard">
+    <div class="detail-top">
+      <span class="detail-log" id="dLog">200</span>
+      <span class="detail-level" id="dLevel">Courage</span>
+      <span class="detail-mode" id="dMode">Self-Empowerment</span>
+    </div>
+    <div class="drive-quote" id="dDrive">"I can survive even if others can't"</div>
+    <div class="happiness-row">
+      <span class="happ-label">Happiness</span>
+      <div class="happ-track"><div class="happ-fill" id="happFill" style="width:55%"></div></div>
+      <span class="happ-pct" id="happPct">55%</span>
+    </div>
+    <div class="attrs" id="attrsGrid"></div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" onclick="move(-1)">← prev</button>
+    <span class="nav-count" id="navCount">9 / 17</span>
+    <button class="nav-btn" onclick="move(1)">next →</button>
+  </div>
+  <div class="key-hint">or use ← → arrow keys</div>
+</div>
+
+<script>
+const levels=[
+  {log:20,level:"Shame",lifeView:"Miserable",emotion:"Humiliation",godView:"Despising",process:"Elimination",drive:"I don't want to survive",happiness:1,pop:"78%",mode:"Victim/Abuser"},
+  {log:30,level:"Guilt",lifeView:"Evil",emotion:"Blame",godView:"Vindictive",process:"Destruction",drive:"No one needs to survive",happiness:4,pop:"78%",mode:"Victim/Abuser"},
+  {log:50,level:"Apathy",lifeView:"Hopeless",emotion:"Despair",godView:"Condemning",process:"Abdication",drive:"Why would anyone want to survive",happiness:5,pop:"78%",mode:"Victim/Abuser"},
+  {log:75,level:"Grief",lifeView:"Tragic",emotion:"Regret",godView:"Disdainful",process:"Despondency",drive:"You don't survive so I don't",happiness:9,pop:"78%",mode:"Victim/Abuser"},
+  {log:100,level:"Fear",lifeView:"Frightening",emotion:"Anxiety",godView:"Punitive",process:"Withdrawal",drive:"I only survive if you don't",happiness:10,pop:"78%",mode:"Victim/Abuser"},
+  {log:125,level:"Desire",lifeView:"Disappointing",emotion:"Craving",godView:"Denying",process:"Enslavement",drive:"I only survive if others give me what I want",happiness:10,pop:"78%",mode:"Victim/Abuser"},
+  {log:150,level:"Anger",lifeView:"Antagonistic",emotion:"Hate",godView:"Vengeful",process:"Aggression",drive:"I can only survive if I control others",happiness:12,pop:"78%",mode:"Victim/Abuser"},
+  {log:175,level:"Pride",lifeView:"Demanding",emotion:"Scorn",godView:"Indifferent",process:"Inflation",drive:"I have to help others in order to survive",happiness:22,pop:"78%",mode:"Victim/Abuser"},
+  {log:200,level:"Courage",lifeView:"Feasible",emotion:"Affirmation",godView:"Permitting",process:"Empowerment",drive:"I can survive even if others can't",happiness:55,pop:"18%",mode:"Self-Empowerment"},
+  {log:250,level:"Neutrality",lifeView:"Satisfactory",emotion:"Trust",godView:"Enabling",process:"Release",drive:"I trust the universe to help me",happiness:60,pop:"18%",mode:"Self-Empowerment"},
+  {log:310,level:"Willingness",lifeView:"Hopeful",emotion:"Optimism",godView:"Inspiring",process:"Intention",drive:"Life is good",happiness:68,pop:"18%",mode:"Self-Empowerment"},
+  {log:350,level:"Acceptance",lifeView:"Harmonious",emotion:"Forgiveness",godView:"Merciful",process:"Transcendence",drive:"People are inherently good",happiness:71,pop:"18%",mode:"Self-Empowerment"},
+  {log:400,level:"Reason",lifeView:"Meaningful",emotion:"Understanding",godView:"Wise",process:"Abstraction",drive:"Everyone is capable of learning",happiness:79,pop:"18%",mode:"Self-Empowerment"},
+  {log:500,level:"Love",lifeView:"Benign",emotion:"Reverence",godView:"Loving",process:"Revelation",drive:"We can all share in happiness",happiness:89,pop:"3.99%",mode:"Self-Realization"},
+  {log:540,level:"Joy",lifeView:"Complete",emotion:"Serenity",godView:"One",process:"Transfiguration",drive:"Your joy is my joy",happiness:96,pop:"0.40%",mode:"Self-Realization"},
+  {log:600,level:"Peace",lifeView:"Perfect",emotion:"Bliss",godView:"All-Being",process:"Illumination",drive:"Good of mankind",happiness:100,pop:"722 persons",mode:"Spiritual"},
+  {log:1000,level:"Enlightenment",lifeView:"Is",emotion:"Ineffable",godView:"Self",process:"Pure-Consciousness",drive:"Salvation of humanity",happiness:100,pop:"722 persons",mode:"Spiritual"},
+];
+
+const modeColors={
+  "Victim/Abuser":  {bright:"var(--victim)", dim:"var(--victim-dim)", badge:"background:#4a1515;color:#ff8a80"},
+  "Self-Empowerment":{bright:"var(--empower)",dim:"var(--empower-dim)",badge:"background:#4a2e08;color:#ffcc80"},
+  "Self-Realization":{bright:"var(--realize)",dim:"var(--realize-dim)",badge:"background:#083d2c;color:#80cbc4"},
+  "Spiritual":       {bright:"var(--spirit)", dim:"var(--spirit-dim)", badge:"background:#2a2660;color:#b3b0ff"},
+};
+const happColors={"Victim/Abuser":"#c0392b","Self-Empowerment":"#c47d1a","Self-Realization":"#1a9e75","Spiritual":"#7f77dd"};
+
+let current=8;
+const chartH=340;
+const logMin=Math.log10(20), logMax=Math.log10(1000);
+function barH(log){ return Math.round(((Math.log10(log)-logMin)/(logMax-logMin))*chartH*0.88+chartH*0.07); }
+
+const barsEl=document.getElementById('barsEl');
+const barEls=[];
+
+levels.forEach((d,i)=>{
+  const col=document.createElement('div');
+  col.className='bar-col';
+  const bar=document.createElement('div');
+  bar.className='bar';
+  const h=barH(d.log);
+  bar.style.height=h+'px';
+  bar.style.background=modeColors[d.mode].bright;
+  const lbl=document.createElement('span');
+  lbl.className='bar-log';
+  lbl.textContent=d.log;
+  col.appendChild(bar);
+  col.appendChild(lbl);
+  col.addEventListener('click',()=>setLevel(i));
+  barsEl.appendChild(col);
+  barEls.push({col,bar,h});
+});
+
+const cursorLine=document.getElementById('cursorLine');
+const cursorLabel=document.getElementById('cursorLabel');
+const chartWrap=document.getElementById('chartWrap');
+
+function cursorTop(i){
+  const paddingTop=28, paddingBottom=36;
+  const availH=chartWrap.offsetHeight-paddingTop-paddingBottom;
+  const h=barEls[i].h;
+  const frac=h/chartH;
+  return paddingTop+(availH*(1-frac));
+}
+
+function setLevel(i){
+  current=Math.max(0,Math.min(levels.length-1,i));
+  const d=levels[current];
+  const mc=modeColors[d.mode];
+
+  // cursor
+  cursorLine.style.top=cursorTop(current)+'px';
+  cursorLabel.textContent=`${d.log} · ${d.level}`;
+
+  // bars
+  barEls.forEach((b,j)=>{
+    b.col.classList.toggle('active',j===current);
+    b.bar.style.background=mc.bright;
+  });
+  barEls.forEach((b,j)=>{
+    if(j!==current) b.bar.style.background=modeColors[levels[j].mode].bright;
+  });
+
+  // detail
+  document.getElementById('dLog').textContent=d.log;
+  document.getElementById('dLevel').textContent=d.level;
+  const modeEl=document.getElementById('dMode');
+  modeEl.textContent=d.mode;
+  modeEl.setAttribute('style',mc.badge+';font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;font-family:"DM Mono",monospace;margin-left:auto');
+  document.getElementById('dDrive').textContent=`"${d.drive}"`;
+  document.getElementById('happFill').style.width=d.happiness+'%';
+  document.getElementById('happFill').style.background=happColors[d.mode];
+  document.getElementById('happPct').textContent=d.happiness+'%';
+
+  document.getElementById('attrsGrid').innerHTML=[
+    {k:'Emotion',v:d.emotion},
+    {k:'Life-view',v:d.lifeView},
+    {k:'God-view',v:d.godView},
+    {k:'Process',v:d.process},
+    {k:'Population',v:d.pop},
+    {k:'Emotion rate',v:d.happiness+'% happy'},
+  ].map(x=>`<div class="attr-cell"><span class="attr-key">${x.k}</span><span class="attr-val">${x.v}</span></div>`).join('');
+
+  document.getElementById('detailCard').style.borderColor=mc.bright.replace('var(','').replace(')','') || 'rgba(255,255,255,0.1)';
+  document.getElementById('navCount').textContent=`${current+1} / ${levels.length}`;
+}
+
+function move(dir){ setLevel(current+dir); }
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key==='ArrowUp') move(1);
+  if(e.key==='ArrowLeft'||e.key==='ArrowDown') move(-1);
+});
+
+window.addEventListener('resize',()=>{ cursorLine.style.top=cursorTop(current)+'px'; });
+
+setLevel(current);
+</script>
+</body>
+</html>
