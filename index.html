@@ -30,57 +30,50 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px 60px;
+    padding: 40px 20px 80px;
   }
-  header {
-    text-align: center;
-    margin-bottom: 40px;
-  }
+  header { text-align: center; margin-bottom: 32px; }
   header h1 {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(28px, 5vw, 46px);
+    font-size: clamp(26px, 5vw, 44px);
     font-weight: 400;
-    letter-spacing: -0.5px;
     color: var(--text);
   }
-  header p {
-    font-size: 12px;
+  header p { font-size: 12px; color: var(--muted); margin-top: 6px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 28px;
+  }
+  .tab {
+    padding: 8px 28px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    background: transparent;
     color: var(--muted);
-    margin-top: 6px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
+    transition: all 0.2s;
+    letter-spacing: 0.04em;
   }
+  .tab.active { background: rgba(127,119,221,0.18); color: #b3b0ff; }
 
-  .legend {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 32px;
-  }
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-  .legend-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-  }
+  .main { width: 100%; max-width: 860px; }
+  .panel { display: none; flex-direction: column; gap: 24px; }
+  .panel.visible { display: flex; }
 
-  .main {
-    width: 100%;
-    max-width: 860px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-  }
+  /* Legend */
+  .legend { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; margin-bottom: 8px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
 
-  /* Bar chart */
+  /* Chart */
   .chart-wrap {
     position: relative;
     background: var(--surface);
@@ -89,26 +82,6 @@
     padding: 28px 20px 36px;
     overflow: hidden;
   }
-  .grid-lines {
-    position: absolute;
-    inset: 28px 20px 36px;
-    pointer-events: none;
-  }
-  .grid-line {
-    position: absolute;
-    left: 0; right: 0;
-    height: 1px;
-    background: var(--border);
-  }
-  .grid-line-label {
-    position: absolute;
-    right: calc(100% + 6px);
-    font-size: 9px;
-    color: var(--muted);
-    transform: translateY(-50%);
-    white-space: nowrap;
-  }
-
   .bars {
     position: relative;
     height: 340px;
@@ -132,37 +105,22 @@
     border-radius: 4px 4px 0 0;
     transition: all 0.25s ease;
     opacity: 0.35;
-    position: relative;
   }
-  .bar-col.active .bar {
-    opacity: 1;
-  }
-  .bar-col:hover .bar {
-    opacity: 0.8;
-    transform: scaleY(1.02);
-    transform-origin: bottom;
-  }
-  .bar-col.active:hover .bar {
-    opacity: 1;
-    transform: none;
-  }
+  .bar-col.active .bar { opacity: 1; }
+  .bar-col:hover .bar { opacity: 0.75; }
+  .bar-col.active:hover .bar { opacity: 1; }
   .bar-log {
-    margin-top: 6px;
-    font-size: 9px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
     position: absolute;
     bottom: -22px;
     left: 50%;
     transform: translateX(-50%);
+    font-size: 9px;
+    color: var(--muted);
     white-space: nowrap;
   }
-
-  /* Cursor line */
   .cursor-line {
     position: absolute;
-    left: 20px;
-    right: 20px;
+    left: 20px; right: 20px;
     height: 1.5px;
     z-index: 5;
     pointer-events: none;
@@ -171,17 +129,13 @@
   .cursor-line::before {
     content: '';
     position: absolute;
-    left: 0; right: 0;
-    height: 100%;
-    background: white;
-    opacity: 0.9;
+    left: 0; right: 0; height: 100%;
+    background: white; opacity: 0.9;
   }
   .cursor-label {
     position: absolute;
-    right: 0;
-    top: -18px;
+    right: 0; top: -18px;
     font-size: 10px;
-    font-family: 'DM Mono', monospace;
     color: white;
     background: var(--surface);
     padding: 2px 6px;
@@ -189,10 +143,9 @@
     border: 0.5px solid rgba(255,255,255,0.2);
     white-space: nowrap;
   }
-  .cursor-triangle {
+  .cursor-tri {
     position: absolute;
-    left: -8px;
-    top: -4px;
+    left: -8px; top: -4px;
     width: 0; height: 0;
     border-top: 4.5px solid transparent;
     border-bottom: 4.5px solid transparent;
@@ -207,104 +160,23 @@
     padding: 24px 28px;
     transition: border-color 0.3s;
   }
-  .detail-top {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    margin-bottom: 6px;
-    flex-wrap: wrap;
-  }
-  .detail-log {
-    font-family: 'DM Serif Display', serif;
-    font-size: 52px;
-    line-height: 1;
-    color: var(--text);
-    font-style: italic;
-  }
-  .detail-level {
-    font-family: 'DM Serif Display', serif;
-    font-size: 28px;
-    font-weight: 400;
-    color: var(--text);
-  }
-  .detail-mode {
-    font-size: 11px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    font-family: 'DM Mono', monospace;
-    margin-left: auto;
-  }
-  .drive-quote {
-    font-size: 13px;
-    color: var(--muted);
-    font-style: italic;
-    font-family: 'DM Serif Display', serif;
-    margin-bottom: 20px;
-    padding-left: 12px;
-    border-left: 2px solid var(--border);
-  }
-
-  .happiness-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  .happ-label {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    min-width: 76px;
-  }
-  .happ-track {
-    flex: 1;
-    height: 4px;
-    background: rgba(255,255,255,0.07);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-  .happ-fill {
-    height: 100%;
-    border-radius: 2px;
-    transition: width 0.4s ease;
-  }
-  .happ-pct {
-    font-size: 12px;
-    color: var(--text);
-    min-width: 34px;
-    text-align: right;
-  }
-
-  .attrs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px 20px;
-  }
-  @media(max-width:560px){
-    .attrs { grid-template-columns: repeat(2,1fr); }
-  }
+  .detail-top { display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px; flex-wrap: wrap; }
+  .detail-log { font-family: 'DM Serif Display', serif; font-size: 52px; line-height: 1; font-style: italic; }
+  .detail-level { font-family: 'DM Serif Display', serif; font-size: 28px; }
+  .detail-mode { font-size: 11px; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase; margin-left: auto; }
+  .drive-quote { font-size: 13px; color: var(--muted); font-style: italic; font-family: 'DM Serif Display', serif; margin-bottom: 20px; padding-left: 12px; border-left: 2px solid var(--border); }
+  .hbar-row { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .hbar-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; min-width: 76px; }
+  .hbar-track { flex: 1; height: 4px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+  .hbar-fill { height: 100%; border-radius: 2px; transition: width 0.4s ease; }
+  .hbar-pct { font-size: 12px; min-width: 34px; text-align: right; }
+  .attrs { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px 20px; }
   .attr-cell { display: flex; flex-direction: column; gap: 3px; }
-  .attr-key {
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-  }
-  .attr-val {
-    font-size: 13px;
-    color: var(--text);
-  }
+  .attr-key { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+  .attr-val { font-size: 13px; }
 
   /* Nav */
-  .nav {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    justify-content: center;
-  }
+  .nav { display: flex; align-items: center; gap: 12px; justify-content: center; }
   .nav-btn {
     background: var(--surface);
     border: 0.5px solid rgba(255,255,255,0.12);
@@ -314,23 +186,84 @@
     padding: 8px 20px;
     border-radius: 8px;
     cursor: pointer;
-    transition: background 0.15s, border-color 0.15s;
     letter-spacing: 0.04em;
+    transition: background 0.15s;
   }
-  .nav-btn:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.22); }
-  .nav-btn:active { transform: scale(0.97); }
-  .nav-count {
-    font-size: 11px;
-    color: var(--muted);
-    min-width: 52px;
-    text-align: center;
+  .nav-btn:hover { background: rgba(255,255,255,0.06); }
+  .nav-count { font-size: 11px; color: var(--muted); min-width: 52px; text-align: center; }
+  .key-hint { font-size: 10px; color: var(--muted); text-align: center; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* Quiz */
+  .quiz-wrap { display: flex; flex-direction: column; gap: 16px; }
+  .prog-row { display: flex; align-items: center; gap: 10px; }
+  .prog-track { flex: 1; height: 4px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
+  .prog-fill { height: 100%; background: #7f77dd; border-radius: 2px; transition: width 0.3s ease; }
+  .prog-lbl { font-size: 12px; color: var(--muted); min-width: 40px; text-align: right; }
+  .q-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 20px 16px;
   }
-  .key-hint {
-    font-size: 10px;
-    color: var(--muted);
-    text-align: center;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+  .q-text { font-size: 15px; font-weight: 500; margin-bottom: 16px; line-height: 1.5; }
+  .opts { display: flex; flex-direction: column; gap: 8px; }
+  .opt {
+    padding: 11px 14px;
+    border: 0.5px solid var(--border);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.12s, border-color 0.12s;
+    text-align: left;
+    background: transparent;
+    font-family: 'DM Mono', monospace;
+  }
+  .opt:hover { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.15); }
+  .opt.selected { background: rgba(127,119,221,0.15); border-color: #7f77dd; color: #b3b0ff; }
+  .qnav-row { display: flex; gap: 10px; justify-content: flex-end; }
+  .qbtn {
+    padding: 8px 20px;
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    border: 0.5px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .qbtn:hover { background: rgba(255,255,255,0.06); }
+  .qbtn:disabled { opacity: 0.3; cursor: default; }
+  .qbtn.primary { background: #7f77dd; border-color: #7f77dd; color: #fff; }
+  .qbtn.primary:hover { background: #534ab7; }
+  .qbtn.primary:disabled { background: rgba(127,119,221,0.3); border-color: transparent; }
+
+  /* Result */
+  .result-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .res-top { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .res-log { font-family: 'DM Serif Display', serif; font-size: 52px; line-height: 1; font-style: italic; }
+  .res-level { font-family: 'DM Serif Display', serif; font-size: 26px; }
+  .res-badge { font-size: 11px; padding: 4px 12px; border-radius: 20px; letter-spacing: 0.05em; text-transform: uppercase; margin-left: auto; }
+  .res-drive { font-size: 13px; color: var(--muted); font-style: italic; font-family: 'DM Serif Display', serif; padding-left: 12px; border-left: 2px solid var(--border); }
+  .res-attrs { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px 16px; }
+  .res-attr { display: flex; flex-direction: column; gap: 2px; }
+  .res-k { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .res-v { font-size: 13px; }
+  .res-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  @media(max-width:560px){
+    .attrs,.res-attrs{ grid-template-columns: repeat(2,1fr); }
+    .detail-log,.res-log{ font-size:36px; }
+    .detail-level,.res-level{ font-size:20px; }
   }
 </style>
 </head>
@@ -341,43 +274,61 @@
   <p>Dr. David R. Hawkins · Scale of Human Awareness</p>
 </header>
 
-<div class="legend">
-  <div class="legend-item"><div class="legend-dot" style="background:var(--victim)"></div>Victim / Abuser</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--empower)"></div>Self-Empowerment</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--realize)"></div>Self-Realization</div>
-  <div class="legend-item"><div class="legend-dot" style="background:var(--spirit)"></div>Spiritual</div>
+<div class="tabs">
+  <button class="tab active" onclick="showTab('chart')">Chart</button>
+  <button class="tab" onclick="showTab('quiz')">Self-Assessment Quiz</button>
 </div>
 
 <div class="main">
-  <div class="chart-wrap" id="chartWrap">
-    <div class="cursor-line" id="cursorLine">
-      <div class="cursor-triangle"></div>
-      <div class="cursor-label" id="cursorLabel">200 · Courage</div>
+
+  <!-- CHART PANEL -->
+  <div class="panel visible" id="panel-chart">
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--victim)"></div>Victim / Abuser</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--empower)"></div>Self-Empowerment</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--realize)"></div>Self-Realization</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--spirit)"></div>Spiritual</div>
     </div>
-    <div class="bars" id="barsEl"></div>
+    <div class="chart-wrap" id="chartWrap">
+      <div class="cursor-line" id="cursorLine">
+        <div class="cursor-tri"></div>
+        <div class="cursor-label" id="cursorLabel">200 · Courage</div>
+      </div>
+      <div class="bars" id="barsEl"></div>
+    </div>
+    <div class="detail-card" id="detailCard">
+      <div class="detail-top">
+        <span class="detail-log" id="dLog">200</span>
+        <span class="detail-level" id="dLevel">Courage</span>
+        <span class="detail-mode" id="dMode"></span>
+      </div>
+      <div class="drive-quote" id="dDrive"></div>
+      <div class="hbar-row">
+        <span class="hbar-lbl">Happiness</span>
+        <div class="hbar-track"><div class="hbar-fill" id="happFill"></div></div>
+        <span class="hbar-pct" id="happPct"></span>
+      </div>
+      <div class="attrs" id="attrsGrid"></div>
+    </div>
+    <div class="nav">
+      <button class="nav-btn" onclick="move(-1)">← prev</button>
+      <span class="nav-count" id="navCount">9 / 17</span>
+      <button class="nav-btn" onclick="move(1)">next →</button>
+    </div>
+    <div class="key-hint">or use ← → arrow keys</div>
   </div>
 
-  <div class="detail-card" id="detailCard">
-    <div class="detail-top">
-      <span class="detail-log" id="dLog">200</span>
-      <span class="detail-level" id="dLevel">Courage</span>
-      <span class="detail-mode" id="dMode">Self-Empowerment</span>
+  <!-- QUIZ PANEL -->
+  <div class="panel" id="panel-quiz">
+    <div class="quiz-wrap">
+      <div class="prog-row">
+        <div class="prog-track"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
+        <span class="prog-lbl" id="progLbl">0 / 10</span>
+      </div>
+      <div id="qArea"></div>
     </div>
-    <div class="drive-quote" id="dDrive">"I can survive even if others can't"</div>
-    <div class="happiness-row">
-      <span class="happ-label">Happiness</span>
-      <div class="happ-track"><div class="happ-fill" id="happFill" style="width:55%"></div></div>
-      <span class="happ-pct" id="happPct">55%</span>
-    </div>
-    <div class="attrs" id="attrsGrid"></div>
   </div>
 
-  <div class="nav">
-    <button class="nav-btn" onclick="move(-1)">← prev</button>
-    <span class="nav-count" id="navCount">9 / 17</span>
-    <button class="nav-btn" onclick="move(1)">next →</button>
-  </div>
-  <div class="key-hint">or use ← → arrow keys</div>
 </div>
 
 <script>
@@ -402,37 +353,34 @@ const levels=[
 ];
 
 const modeColors={
-  "Victim/Abuser":  {bright:"var(--victim)", dim:"var(--victim-dim)", badge:"background:#4a1515;color:#ff8a80"},
-  "Self-Empowerment":{bright:"var(--empower)",dim:"var(--empower-dim)",badge:"background:#4a2e08;color:#ffcc80"},
-  "Self-Realization":{bright:"var(--realize)",dim:"var(--realize-dim)",badge:"background:#083d2c;color:#80cbc4"},
-  "Spiritual":       {bright:"var(--spirit)", dim:"var(--spirit-dim)", badge:"background:#2a2660;color:#b3b0ff"},
+  "Victim/Abuser":  {bright:"#c0392b",dim:"#4a1515",badge:"background:#4a1515;color:#ff8a80",hap:"#c0392b"},
+  "Self-Empowerment":{bright:"#c47d1a",dim:"#4a2e08",badge:"background:#4a2e08;color:#ffcc80",hap:"#c47d1a"},
+  "Self-Realization":{bright:"#1a9e75",dim:"#083d2c",badge:"background:#083d2c;color:#80cbc4",hap:"#1a9e75"},
+  "Spiritual":       {bright:"#7f77dd",dim:"#2a2660",badge:"background:#2a2660;color:#b3b0ff",hap:"#7f77dd"},
 };
-const happColors={"Victim/Abuser":"#c0392b","Self-Empowerment":"#c47d1a","Self-Realization":"#1a9e75","Spiritual":"#7f77dd"};
 
+// ── CHART ──
 let current=8;
 const chartH=340;
-const logMin=Math.log10(20), logMax=Math.log10(1000);
-function barH(log){ return Math.round(((Math.log10(log)-logMin)/(logMax-logMin))*chartH*0.88+chartH*0.07); }
+const logMin=Math.log10(20),logMax=Math.log10(1000);
+function barH(log){return Math.round(((Math.log10(log)-logMin)/(logMax-logMin))*chartH*0.88+chartH*0.07);}
 
 const barsEl=document.getElementById('barsEl');
 const barEls=[];
-
 levels.forEach((d,i)=>{
   const col=document.createElement('div');
   col.className='bar-col';
   const bar=document.createElement('div');
   bar.className='bar';
-  const h=barH(d.log);
-  bar.style.height=h+'px';
+  bar.style.height=barH(d.log)+'px';
   bar.style.background=modeColors[d.mode].bright;
   const lbl=document.createElement('span');
   lbl.className='bar-log';
   lbl.textContent=d.log;
-  col.appendChild(bar);
-  col.appendChild(lbl);
+  col.appendChild(bar);col.appendChild(lbl);
   col.addEventListener('click',()=>setLevel(i));
   barsEl.appendChild(col);
-  barEls.push({col,bar,h});
+  barEls.push({col,bar,h:barH(d.log)});
 });
 
 const cursorLine=document.getElementById('cursorLine');
@@ -440,64 +388,211 @@ const cursorLabel=document.getElementById('cursorLabel');
 const chartWrap=document.getElementById('chartWrap');
 
 function cursorTop(i){
-  const paddingTop=28, paddingBottom=36;
-  const availH=chartWrap.offsetHeight-paddingTop-paddingBottom;
-  const h=barEls[i].h;
-  const frac=h/chartH;
-  return paddingTop+(availH*(1-frac));
+  const pt=28,pb=36;
+  const avail=chartWrap.offsetHeight-pt-pb;
+  return pt+(avail*(1-barEls[i].h/chartH));
 }
 
 function setLevel(i){
   current=Math.max(0,Math.min(levels.length-1,i));
   const d=levels[current];
   const mc=modeColors[d.mode];
-
-  // cursor
   cursorLine.style.top=cursorTop(current)+'px';
-  cursorLabel.textContent=`${d.log} · ${d.level}`;
-
-  // bars
+  cursorLabel.textContent=d.log+' · '+d.level;
   barEls.forEach((b,j)=>{
     b.col.classList.toggle('active',j===current);
-    b.bar.style.background=mc.bright;
+    b.bar.style.background=modeColors[levels[j].mode].bright;
   });
-  barEls.forEach((b,j)=>{
-    if(j!==current) b.bar.style.background=modeColors[levels[j].mode].bright;
-  });
-
-  // detail
   document.getElementById('dLog').textContent=d.log;
   document.getElementById('dLevel').textContent=d.level;
   const modeEl=document.getElementById('dMode');
   modeEl.textContent=d.mode;
   modeEl.setAttribute('style',mc.badge+';font-size:11px;padding:4px 12px;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;font-family:"DM Mono",monospace;margin-left:auto');
-  document.getElementById('dDrive').textContent=`"${d.drive}"`;
+  document.getElementById('dDrive').textContent='"'+d.drive+'"';
   document.getElementById('happFill').style.width=d.happiness+'%';
-  document.getElementById('happFill').style.background=happColors[d.mode];
+  document.getElementById('happFill').style.background=mc.hap;
   document.getElementById('happPct').textContent=d.happiness+'%';
-
   document.getElementById('attrsGrid').innerHTML=[
-    {k:'Emotion',v:d.emotion},
-    {k:'Life-view',v:d.lifeView},
-    {k:'God-view',v:d.godView},
-    {k:'Process',v:d.process},
-    {k:'Population',v:d.pop},
-    {k:'Emotion rate',v:d.happiness+'% happy'},
-  ].map(x=>`<div class="attr-cell"><span class="attr-key">${x.k}</span><span class="attr-val">${x.v}</span></div>`).join('');
-
-  document.getElementById('detailCard').style.borderColor=mc.bright.replace('var(','').replace(')','') || 'rgba(255,255,255,0.1)';
-  document.getElementById('navCount').textContent=`${current+1} / ${levels.length}`;
+    {k:'Emotion',v:d.emotion},{k:'Life-view',v:d.lifeView},{k:'God-view',v:d.godView},
+    {k:'Process',v:d.process},{k:'Population',v:d.pop},{k:'Mode',v:d.mode},
+  ].map(x=>'<div class="attr-cell"><span class="attr-key">'+x.k+'</span><span class="attr-val">'+x.v+'</span></div>').join('');
+  document.getElementById('navCount').textContent=(current+1)+' / '+levels.length;
 }
 
-function move(dir){ setLevel(current+dir); }
+function move(dir){setLevel(current+dir);}
 document.addEventListener('keydown',e=>{
-  if(e.key==='ArrowRight'||e.key==='ArrowUp') move(1);
-  if(e.key==='ArrowLeft'||e.key==='ArrowDown') move(-1);
+  if(document.getElementById('panel-chart').classList.contains('visible')){
+    if(e.key==='ArrowRight'||e.key==='ArrowUp')move(1);
+    if(e.key==='ArrowLeft'||e.key==='ArrowDown')move(-1);
+  }
 });
-
-window.addEventListener('resize',()=>{ cursorLine.style.top=cursorTop(current)+'px'; });
-
+window.addEventListener('resize',()=>{cursorLine.style.top=cursorTop(current)+'px';});
 setLevel(current);
+
+// ── QUIZ ──
+const questions=[
+  {text:"When things go wrong in your life, your first instinct is…",opts:[
+    {text:"It's my fault — I'm the problem",score:20},
+    {text:"I feel crushed and can't move on",score:75},
+    {text:"I get angry and want to blame someone",score:150},
+    {text:"I feel anxious but try to manage it",score:100},
+    {text:"I accept it and look for what I can do",score:350},
+    {text:"I trust that things will work out",score:250},
+  ]},
+  {text:"How do you generally feel about other people?",opts:[
+    {text:"Most people are out to get me",score:100},
+    {text:"People disappoint me constantly",score:125},
+    {text:"I have to be better than others to matter",score:175},
+    {text:"People are basically good and capable",score:350},
+    {text:"I love people and want to help them grow",score:500},
+    {text:"We are all connected at a deeper level",score:540},
+  ]},
+  {text:"When you wake up in the morning, you mostly feel…",opts:[
+    {text:"Dread — another hard day ahead",score:50},
+    {text:"Anxious about what could go wrong",score:100},
+    {text:"Fine — nothing special either way",score:250},
+    {text:"Optimistic and ready to take on the day",score:310},
+    {text:"Grateful and at peace",score:540},
+    {text:"A quiet, deep sense of joy",score:600},
+  ]},
+  {text:"How do you handle someone who disagrees with you?",opts:[
+    {text:"I feel humiliated and shut down",score:20},
+    {text:"I get irritated and want to prove them wrong",score:150},
+    {text:"I feel hurt but keep it inside",score:75},
+    {text:"I listen and try to understand their view",score:400},
+    {text:"I welcome it — different perspectives help me grow",score:350},
+    {text:"I feel compassion — we all see things differently",score:500},
+  ]},
+  {text:"What motivates you most in life?",opts:[
+    {text:"Getting what I want before others do",score:125},
+    {text:"Proving I am better than those around me",score:175},
+    {text:"Surviving and staying safe",score:100},
+    {text:"Learning, growing, and improving myself",score:400},
+    {text:"Making the world a better place",score:500},
+    {text:"Experiencing the joy of being alive",score:540},
+  ]},
+  {text:"How do you feel about your past mistakes?",opts:[
+    {text:"I am deeply ashamed — I am a bad person",score:20},
+    {text:"I feel guilty and keep punishing myself",score:30},
+    {text:"I regret them and feel sad",score:75},
+    {text:"I've accepted them and moved forward",score:350},
+    {text:"They taught me valuable lessons",score:400},
+    {text:"They shaped me into who I am — I'm at peace",score:540},
+  ]},
+  {text:"When you see someone suffering, you feel…",opts:[
+    {text:"Indifferent — it's not my problem",score:175},
+    {text:"Uncomfortable and want to avoid it",score:50},
+    {text:"Sad but unsure what to do",score:75},
+    {text:"A genuine desire to help if I can",score:310},
+    {text:"Deep empathy and love for them",score:500},
+    {text:"Oneness — their pain is my pain",score:540},
+  ]},
+  {text:"How do you feel about uncertainty and the unknown?",opts:[
+    {text:"It terrifies me",score:100},
+    {text:"It frustrates and angers me",score:150},
+    {text:"I try to control everything to avoid it",score:175},
+    {text:"I accept it as part of life",score:350},
+    {text:"I embrace it — life is an adventure",score:310},
+    {text:"I am at peace with not knowing",score:600},
+  ]},
+  {text:"How would you describe your relationship with yourself?",opts:[
+    {text:"I hate myself or feel worthless",score:20},
+    {text:"I'm hard on myself — never good enough",score:30},
+    {text:"I'm okay but wish I were different",score:125},
+    {text:"I respect myself and my journey",score:250},
+    {text:"I love and accept myself fully",score:500},
+    {text:"I see myself as part of something greater",score:600},
+  ]},
+  {text:"What best describes your outlook on the future?",opts:[
+    {text:"There's no point — nothing will change",score:50},
+    {text:"I'm worried about what's coming",score:100},
+    {text:"I'll manage whatever comes my way",score:200},
+    {text:"The future is full of possibilities",score:310},
+    {text:"I am excited to keep evolving",score:400},
+    {text:"All is well — now and always",score:600},
+  ]},
+];
+
+function closestLevel(score){return levels.reduce((a,b)=>Math.abs(b.log-score)<Math.abs(a.log-score)?b:a);}
+
+let qCurrent=0,qAnswers=[],qSelected=null;
+
+function renderQuiz(){
+  const pct=Math.round((qCurrent/questions.length)*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progLbl').textContent=qCurrent+' / '+questions.length;
+  if(qCurrent>=questions.length){showQuizResult();return;}
+  const q=questions[qCurrent];
+  qSelected=null;
+  document.getElementById('qArea').innerHTML=
+    '<div class="q-card">'+
+      '<div class="q-text">Q'+(qCurrent+1)+'. '+q.text+'</div>'+
+      '<div class="opts" id="opts">'+
+        q.opts.map((o,i)=>'<button class="opt" onclick="qPick('+i+')">'+o.text+'</button>').join('')+
+      '</div>'+
+    '</div>'+
+    '<div class="qnav-row">'+
+      (qCurrent>0?'<button class="qbtn" onclick="qBack()">Back</button>':'')+
+      '<button class="qbtn primary" id="qNext" onclick="qNext()" disabled>Next</button>'+
+    '</div>';
+  if(qAnswers[qCurrent]!==undefined)qPick(qAnswers[qCurrent],true);
+}
+
+function qPick(i,restore){
+  qSelected=i;
+  document.querySelectorAll('.opt').forEach((b,j)=>b.classList.toggle('selected',j===i));
+  document.getElementById('qNext').disabled=false;
+  if(!restore)qAnswers[qCurrent]=i;
+}
+function qNext(){if(qSelected===null)return;qAnswers[qCurrent]=qSelected;qCurrent++;renderQuiz();}
+function qBack(){if(qCurrent>0){qCurrent--;renderQuiz();}}
+
+function showQuizResult(){
+  document.getElementById('progFill').style.width='100%';
+  document.getElementById('progLbl').textContent='10 / 10';
+  const total=qAnswers.reduce((s,ai,qi)=>s+questions[qi].opts[ai].score,0);
+  const avg=Math.round(total/questions.length);
+  const lvl=closestLevel(avg);
+  const mc=modeColors[lvl.mode];
+  document.getElementById('qArea').innerHTML=
+    '<div class="result-card">'+
+      '<div class="res-top">'+
+        '<span class="res-log">'+lvl.log+'</span>'+
+        '<span class="res-level">'+lvl.level+'</span>'+
+        '<span class="res-badge" style="'+mc.badge+'">'+lvl.mode+'</span>'+
+      '</div>'+
+      '<div class="res-drive">"'+lvl.drive+'"</div>'+
+      '<div class="hbar-row">'+
+        '<span class="hbar-lbl">Happiness</span>'+
+        '<div class="hbar-track"><div class="hbar-fill" style="width:'+lvl.happiness+'%;background:'+mc.hap+'"></div></div>'+
+        '<span class="hbar-pct">'+lvl.happiness+'%</span>'+
+      '</div>'+
+      '<div class="res-attrs">'+
+        [
+          {k:'Emotion',v:lvl.emotion},{k:'Life-view',v:lvl.lifeView},{k:'God-view',v:lvl.godView},
+          {k:'Process',v:lvl.process},{k:'Population',v:lvl.pop},{k:'Your avg score',v:avg},
+        ].map(x=>'<div class="res-attr"><span class="res-k">'+x.k+'</span><span class="res-v">'+x.v+'</span></div>').join('')+
+      '</div>'+
+      '<div class="res-btns">'+
+        '<button class="qbtn" onclick="qRestart()">Retake quiz</button>'+
+        '<button class="qbtn primary" onclick="showTab(\'chart\')">View on chart</button>'+
+      '</div>'+
+    '</div>';
+  // highlight the result level on the chart
+  const idx=levels.findIndex(l=>l.log===lvl.log);
+  if(idx>=0)setLevel(idx);
+}
+
+function qRestart(){qCurrent=0;qAnswers=[];qSelected=null;renderQuiz();}
+
+// ── TABS ──
+function showTab(tab){
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['chart','quiz'][i]===tab));
+  document.getElementById('panel-chart').classList.toggle('visible',tab==='chart');
+  document.getElementById('panel-quiz').classList.toggle('visible',tab==='quiz');
+  if(tab==='quiz')renderQuiz();
+  if(tab==='chart'){cursorLine.style.top=cursorTop(current)+'px';}
+}
 </script>
 </body>
 </html>
