@@ -69,6 +69,8 @@
   .qbtn:disabled{opacity:0.3;cursor:default;}
   .qbtn.primary{background:#7f77dd;border-color:#7f77dd;color:#fff;}
   .qbtn.primary:hover{background:#534ab7;}
+  .qbtn.whatsapp{background:#25D366;border-color:#25D366;color:#fff;display:flex;align-items:center;gap:8px;}
+  .qbtn.whatsapp:hover{background:#1da851;}
   .result-card{background:var(--surface);border:0.5px solid var(--border);border-radius:16px;padding:28px 24px 24px;display:flex;flex-direction:column;gap:20px;}
   .res-top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;}
   .res-log{font-family:'DM Serif Display',serif;font-size:52px;line-height:1;font-style:italic;}
@@ -85,16 +87,16 @@
   .report-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px;}
   .report-text{font-size:13px;line-height:1.6;color:var(--text);}
   .report-label{font-size:10px;text-transform:uppercase;letter-spacing:0.06em;color:var(--muted);margin-bottom:2px;}
-  .sug-tabs{display:flex;gap:4px;margin-bottom:12px;}
+  .sug-tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap;}
   .sug-tab{padding:5px 14px;font-size:11px;font-family:'DM Mono',monospace;border-radius:6px;border:0.5px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;letter-spacing:0.04em;transition:all 0.15s;}
   .sug-tab.active{background:rgba(127,119,221,0.15);border-color:#7f77dd;color:#b3b0ff;}
   .suggestion-list{display:flex;flex-direction:column;gap:10px;}
   .sug-item{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,0.03);border:0.5px solid var(--border);border-radius:10px;padding:14px 16px;}
-  .sug-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:1px;}
+  .sug-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;margin-top:1px;background:rgba(255,255,255,0.05);}
   .sug-body{flex:1;}
   .sug-title{font-size:13px;font-weight:500;margin-bottom:4px;}
   .sug-desc{font-size:12px;color:var(--muted);line-height:1.6;}
-  .breath-steps{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;}
+  .breath-steps{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;}
   .breath-step{background:rgba(127,119,221,0.12);border:0.5px solid rgba(127,119,221,0.3);border-radius:6px;padding:4px 10px;font-size:11px;color:#b3b0ff;}
   .routine-time{display:inline-block;background:rgba(26,158,117,0.12);border:0.5px solid rgba(26,158,117,0.3);border-radius:6px;padding:3px 8px;font-size:10px;color:#80cbc4;margin-bottom:6px;letter-spacing:0.04em;}
   .next-level-banner{border-radius:12px;padding:16px 18px;display:flex;align-items:center;gap:16px;}
@@ -103,8 +105,26 @@
   .nl-label{font-size:10px;text-transform:uppercase;letter-spacing:0.07em;opacity:0.7;margin-bottom:4px;}
   .nl-level{font-size:18px;font-weight:500;}
   .nl-desc{font-size:12px;opacity:0.75;margin-top:3px;line-height:1.5;}
+  .share-card{border-radius:16px;padding:24px 20px 20px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;}
+  .share-card-tag{font-size:10px;letter-spacing:0.1em;text-transform:uppercase;opacity:0.6;font-family:'DM Mono',monospace;}
+  .share-card-main{display:flex;align-items:flex-end;gap:14px;}
+  .share-card-log{font-family:'DM Serif Display',serif;font-size:64px;line-height:1;font-style:italic;}
+  .share-card-right{display:flex;flex-direction:column;gap:3px;padding-bottom:6px;}
+  .share-card-level{font-family:'DM Serif Display',serif;font-size:22px;}
+  .share-card-mode{font-size:11px;letter-spacing:0.06em;text-transform:uppercase;opacity:0.7;}
+  .share-card-drive{font-size:13px;font-style:italic;opacity:0.8;font-family:'DM Serif Display',serif;padding-left:12px;border-left:2px solid rgba(255,255,255,0.25);line-height:1.5;}
+  .share-card-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .sc-stat{background:rgba(255,255,255,0.1);border-radius:8px;padding:9px 10px;display:flex;flex-direction:column;gap:2px;}
+  .sc-stat-k{font-size:10px;letter-spacing:0.06em;text-transform:uppercase;opacity:0.6;}
+  .sc-stat-v{font-size:12px;font-weight:500;}
+  .share-card-hap{display:flex;align-items:center;gap:10px;}
+  .sc-hap-track{flex:1;height:3px;background:rgba(255,255,255,0.2);border-radius:2px;overflow:hidden;}
+  .sc-hap-fill{height:100%;background:rgba(255,255,255,0.85);border-radius:2px;}
+  .sc-hap-pct{font-size:11px;opacity:0.75;min-width:28px;}
+  .share-card-footer{font-size:10px;opacity:0.4;letter-spacing:0.05em;text-transform:uppercase;}
+  .share-btns{display:flex;gap:10px;flex-wrap:wrap;}
   .res-btns{display:flex;gap:10px;flex-wrap:wrap;}
-  @media(max-width:560px){.attrs,.res-attrs{grid-template-columns:repeat(2,1fr);}.detail-log,.res-log{font-size:36px;}.detail-level,.res-level{font-size:20px;}}
+  @media(max-width:560px){.attrs,.res-attrs{grid-template-columns:repeat(2,1fr);}.detail-log,.res-log{font-size:36px;}.detail-level,.res-level{font-size:20px;}.share-card-stats{grid-template-columns:repeat(2,1fr);}}
 </style>
 </head>
 <body>
@@ -161,23 +181,23 @@
 </div>
 <script>
 const levels=[
-  {log:20,level:"Shame",lifeView:"Miserable",emotion:"Humiliation",godView:"Despising",process:"Elimination",drive:"I don't want to survive",happiness:1,pop:"78%",mode:"Victim/Abuser"},
-  {log:30,level:"Guilt",lifeView:"Evil",emotion:"Blame",godView:"Vindictive",process:"Destruction",drive:"No one needs to survive",happiness:4,pop:"78%",mode:"Victim/Abuser"},
-  {log:50,level:"Apathy",lifeView:"Hopeless",emotion:"Despair",godView:"Condemning",process:"Abdication",drive:"Why would anyone want to survive",happiness:5,pop:"78%",mode:"Victim/Abuser"},
-  {log:75,level:"Grief",lifeView:"Tragic",emotion:"Regret",godView:"Disdainful",process:"Despondency",drive:"You don't survive so I don't",happiness:9,pop:"78%",mode:"Victim/Abuser"},
-  {log:100,level:"Fear",lifeView:"Frightening",emotion:"Anxiety",godView:"Punitive",process:"Withdrawal",drive:"I only survive if you don't",happiness:10,pop:"78%",mode:"Victim/Abuser"},
-  {log:125,level:"Desire",lifeView:"Disappointing",emotion:"Craving",godView:"Denying",process:"Enslavement",drive:"I only survive if others give me what I want",happiness:10,pop:"78%",mode:"Victim/Abuser"},
-  {log:150,level:"Anger",lifeView:"Antagonistic",emotion:"Hate",godView:"Vengeful",process:"Aggression",drive:"I can only survive if I control others",happiness:12,pop:"78%",mode:"Victim/Abuser"},
-  {log:175,level:"Pride",lifeView:"Demanding",emotion:"Scorn",godView:"Indifferent",process:"Inflation",drive:"I have to help others in order to survive",happiness:22,pop:"78%",mode:"Victim/Abuser"},
-  {log:200,level:"Courage",lifeView:"Feasible",emotion:"Affirmation",godView:"Permitting",process:"Empowerment",drive:"I can survive even if others can't",happiness:55,pop:"18%",mode:"Self-Empowerment"},
-  {log:250,level:"Neutrality",lifeView:"Satisfactory",emotion:"Trust",godView:"Enabling",process:"Release",drive:"I trust the universe to help me",happiness:60,pop:"18%",mode:"Self-Empowerment"},
-  {log:310,level:"Willingness",lifeView:"Hopeful",emotion:"Optimism",godView:"Inspiring",process:"Intention",drive:"Life is good",happiness:68,pop:"18%",mode:"Self-Empowerment"},
-  {log:350,level:"Acceptance",lifeView:"Harmonious",emotion:"Forgiveness",godView:"Merciful",process:"Transcendence",drive:"People are inherently good",happiness:71,pop:"18%",mode:"Self-Empowerment"},
-  {log:400,level:"Reason",lifeView:"Meaningful",emotion:"Understanding",godView:"Wise",process:"Abstraction",drive:"Everyone is capable of learning",happiness:79,pop:"18%",mode:"Self-Empowerment"},
-  {log:500,level:"Love",lifeView:"Benign",emotion:"Reverence",godView:"Loving",process:"Revelation",drive:"We can all share in happiness",happiness:89,pop:"3.99%",mode:"Self-Realization"},
-  {log:540,level:"Joy",lifeView:"Complete",emotion:"Serenity",godView:"One",process:"Transfiguration",drive:"Your joy is my joy",happiness:96,pop:"0.40%",mode:"Self-Realization"},
-  {log:600,level:"Peace",lifeView:"Perfect",emotion:"Bliss",godView:"All-Being",process:"Illumination",drive:"Good of mankind",happiness:100,pop:"722 persons",mode:"Spiritual"},
-  {log:1000,level:"Enlightenment",lifeView:"Is",emotion:"Ineffable",godView:"Self",process:"Pure-Consciousness",drive:"Salvation of humanity",happiness:100,pop:"722 persons",mode:"Spiritual"},
+  {log:20,level:"Shame",lifeView:"Miserable",emotion:"Humiliation",godView:"Despising",process:"Elimination",drive:"I don't want to survive",happiness:1,pop:"78%",mode:"Victim/Abuser",bg:"#2d0a0a",accent:"#ff8a80"},
+  {log:30,level:"Guilt",lifeView:"Evil",emotion:"Blame",godView:"Vindictive",process:"Destruction",drive:"No one needs to survive",happiness:4,pop:"78%",mode:"Victim/Abuser",bg:"#2d0a0a",accent:"#ff8a80"},
+  {log:50,level:"Apathy",lifeView:"Hopeless",emotion:"Despair",godView:"Condemning",process:"Abdication",drive:"Why would anyone want to survive",happiness:5,pop:"78%",mode:"Victim/Abuser",bg:"#1a0a0a",accent:"#ff8a80"},
+  {log:75,level:"Grief",lifeView:"Tragic",emotion:"Regret",godView:"Disdainful",process:"Despondency",drive:"You don't survive so I don't",happiness:9,pop:"78%",mode:"Victim/Abuser",bg:"#1a0a0a",accent:"#ff8a80"},
+  {log:100,level:"Fear",lifeView:"Frightening",emotion:"Anxiety",godView:"Punitive",process:"Withdrawal",drive:"I only survive if you don't",happiness:10,pop:"78%",mode:"Victim/Abuser",bg:"#2d1a0a",accent:"#ffcc80"},
+  {log:125,level:"Desire",lifeView:"Disappointing",emotion:"Craving",godView:"Denying",process:"Enslavement",drive:"I only survive if others give me what I want",happiness:10,pop:"78%",mode:"Victim/Abuser",bg:"#2d1a0a",accent:"#ffcc80"},
+  {log:150,level:"Anger",lifeView:"Antagonistic",emotion:"Hate",godView:"Vengeful",process:"Aggression",drive:"I can only survive if I control others",happiness:12,pop:"78%",mode:"Victim/Abuser",bg:"#3d1a0a",accent:"#ffcc80"},
+  {log:175,level:"Pride",lifeView:"Demanding",emotion:"Scorn",godView:"Indifferent",process:"Inflation",drive:"I have to help others in order to survive",happiness:22,pop:"78%",mode:"Victim/Abuser",bg:"#3d2a0a",accent:"#ffcc80"},
+  {log:200,level:"Courage",lifeView:"Feasible",emotion:"Affirmation",godView:"Permitting",process:"Empowerment",drive:"I can survive even if others can't",happiness:55,pop:"18%",mode:"Self-Empowerment",bg:"#0a2d1a",accent:"#80cbc4"},
+  {log:250,level:"Neutrality",lifeView:"Satisfactory",emotion:"Trust",godView:"Enabling",process:"Release",drive:"I trust the universe to help me",happiness:60,pop:"18%",mode:"Self-Empowerment",bg:"#0a2d1a",accent:"#80cbc4"},
+  {log:310,level:"Willingness",lifeView:"Hopeful",emotion:"Optimism",godView:"Inspiring",process:"Intention",drive:"Life is good",happiness:68,pop:"18%",mode:"Self-Empowerment",bg:"#0a3d2a",accent:"#80cbc4"},
+  {log:350,level:"Acceptance",lifeView:"Harmonious",emotion:"Forgiveness",godView:"Merciful",process:"Transcendence",drive:"People are inherently good",happiness:71,pop:"18%",mode:"Self-Empowerment",bg:"#0a3d2a",accent:"#a5d6a7"},
+  {log:400,level:"Reason",lifeView:"Meaningful",emotion:"Understanding",godView:"Wise",process:"Abstraction",drive:"Everyone is capable of learning",happiness:79,pop:"18%",mode:"Self-Empowerment",bg:"#0a2a3d",accent:"#90caf9"},
+  {log:500,level:"Love",lifeView:"Benign",emotion:"Reverence",godView:"Loving",process:"Revelation",drive:"We can all share in happiness",happiness:89,pop:"3.99%",mode:"Self-Realization",bg:"#1a0a3d",accent:"#b3b0ff"},
+  {log:540,level:"Joy",lifeView:"Complete",emotion:"Serenity",godView:"One",process:"Transfiguration",drive:"Your joy is my joy",happiness:96,pop:"0.40%",mode:"Self-Realization",bg:"#2a0a4d",accent:"#e1bee7"},
+  {log:600,level:"Peace",lifeView:"Perfect",emotion:"Bliss",godView:"All-Being",process:"Illumination",drive:"Good of mankind",happiness:100,pop:"722 persons",mode:"Spiritual",bg:"#0a0a2d",accent:"#e8eaf6"},
+  {log:1000,level:"Enlightenment",lifeView:"Is",emotion:"Ineffable",godView:"Self",process:"Pure-Consciousness",drive:"Salvation of humanity",happiness:100,pop:"722 persons",mode:"Spiritual",bg:"#050510",accent:"#ede7f6"},
 ];
 const modeColors={
   "Victim/Abuser":{bright:"#c0392b",badge:"background:#4a1515;color:#ff8a80",hap:"#c0392b",banner:"background:rgba(192,57,43,0.12);color:#ff8a80"},
@@ -186,312 +206,34 @@ const modeColors={
   "Spiritual":{bright:"#7f77dd",badge:"background:#2a2660;color:#b3b0ff",hap:"#7f77dd",banner:"background:rgba(127,119,221,0.12);color:#b3b0ff"},
 };
 
-// ── SUGGESTIONS DATA ──
 const allSuggestions={
   "Victim/Abuser":{
-    20:{
-      general:[
-        {icon:"🌱",t:"Practice self-compassion daily",d:"Write one kind sentence to yourself each morning. Shame dissolves through self-forgiveness, not self-punishment."},
-        {icon:"🤝",t:"Seek professional support",d:"A therapist provides a safe space to process deep shame. You don't have to carry this alone."},
-        {icon:"🕯️",t:"Find one reason to stay present",d:"Identify a single person, pet, or purpose that gives you a reason to engage with today."},
-        {icon:"📖",t:"Read stories of recovery",d:"Others have healed from shame. Brené Brown's work on shame resilience is a powerful starting point."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Extended Exhale Breath (5-7 breathing)",d:"Inhale for 5 counts, exhale slowly for 7 counts. The longer exhale activates the parasympathetic nervous system and signals safety to the body.",steps:["Inhale: 1-2-3-4-5","Exhale slowly: 1-2-3-4-5-6-7","Repeat 6 times","Do this whenever shame arises"]},
-        {icon:"💨",t:"Hand-on-Heart Breathing",d:"Place one hand on your heart. Breathe in warmth, breathe out tension. The physical touch combined with breath activates self-compassion circuits in the brain.",steps:["Place hand on heart","Breathe in: feel warmth","Breathe out: release tightness","Whisper 'I am enough' on each exhale"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: 2-minute self-compassion ritual",d:"On waking, place hand on heart and say: 'I am here. I am trying. That is enough.' Then take 5 slow breaths before getting up.",time:"Morning · 2 min"},
-        {icon:"🌙",t:"Evening: One kind thing journal",d:"Each night write one thing you did today that took any effort at all — no matter how small. Getting out of bed counts.",time:"Evening · 3 min"},
-        {icon:"🚶",t:"Daily: 10-minute sunlight walk",d:"Step outside every day, even briefly. Sunlight, movement, and the natural world are the simplest antidotes to shame's darkness.",time:"Any time · 10 min"},
-      ],
-    },
-    30:{
-      general:[
-        {icon:"🔍",t:"Distinguish guilt from shame",d:"Guilt says 'I did something bad.' Shame says 'I am bad.' Focus on the action, not your identity. Actions can change."},
-        {icon:"✍️",t:"Start a forgiveness journal",d:"Each day write one thing you forgive yourself for — not to excuse it, but to stop the endless punishment."},
-        {icon:"💬",t:"Talk to someone you trust",d:"Saying guilt out loud to a trusted person almost always makes it smaller. Secrets give guilt its power."},
-        {icon:"🔧",t:"Make one small amend",d:"A small step toward repair — even just acknowledging something internally — begins to release guilt's hold."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"4-4-4-4 Box Breathing",d:"Equal counts of inhale, hold, exhale, hold. This brings the nervous system to neutral and interrupts the guilt loop.",steps:["Inhale: 4 counts","Hold: 4 counts","Exhale: 4 counts","Hold: 4 counts","Repeat 5 rounds"]},
-        {icon:"💨",t:"Sighing Breath (release breath)",d:"Take a normal breath in, then let out a long, audible sigh. Repeat 3 times. This physiologically releases held tension and guilt energy.",steps:["Breathe in normally","Open mouth wide","Let out a long slow sigh","Feel the release","Repeat 3 times"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Intention setting",d:"Each morning choose one small action to take that aligns with who you want to be — not who you fear you are.",time:"Morning · 2 min"},
-        {icon:"🌙",t:"Evening: Guilt audit",d:"Ask: 'Is this guilt pointing to something I can repair, or is it just punishment?' If repair — plan one step. If punishment — write 'I release this.'",time:"Evening · 5 min"},
-        {icon:"🧘",t:"Midday: 5-minute stillness",d:"Sit quietly, close your eyes, breathe slowly. Simply observe your thoughts without following them. This builds the gap between guilt and identity.",time:"Midday · 5 min"},
-      ],
-    },
-    50:{
-      general:[
-        {icon:"⚡",t:"Take one tiny action each day",d:"Apathy is broken by movement, not motivation. Don't wait to feel like it — do one tiny thing and let the feeling follow."},
-        {icon:"🌿",t:"Connect with one living thing",d:"A plant, pet, or person that needs you. Responsibility is a powerful antidote to apathy."},
-        {icon:"📺",t:"Reduce numbing behaviours",d:"Identify what you use to avoid feeling — screens, food, alcohol. Feeling something, even sadness, is better than nothing."},
-        {icon:"🏔️",t:"Lower the bar radically",d:"Don't aim for happiness. Aim for slightly less hopeless. Small wins build momentum."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Stimulating Breath (Bellows Breath)",d:"Short, sharp inhales and exhales through the nose. This activates the sympathetic nervous system and creates energy when everything feels flat.",steps:["Sit upright","Rapid inhale through nose (1 sec)","Rapid exhale through nose (1 sec)","Repeat 10 times","Then breathe normally for 30 sec","Do 3 rounds"]},
-        {icon:"💨",t:"Energising Morning Breath",d:"Three deep breaths taken as soon as you wake up before getting out of bed — each one slightly deeper. Signals to the body: 'Today begins.'",steps:["Still lying down: breathe in deeply","Exhale completely","Second breath: even deeper","Third breath: fill your lungs fully","Now get up — the body is activated"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: One physical action before phone",d:"Before looking at any screen, do one physical thing — wash your face, drink water, step outside. This anchors you in the body and the present.",time:"Morning · 2 min"},
-        {icon:"🌙",t:"Evening: Name one thing that existed today",d:"Not 'good things' — just things that existed. The colour of the sky. Food you ate. A sound you heard. Presence before positivity.",time:"Evening · 2 min"},
-        {icon:"🚶",t:"Daily: 10-minute walk — no phone",d:"Walk outside without any device. The combination of movement, light, and absence of stimulation is one of the most powerful antidotes to apathy.",time:"Any time · 10 min"},
-      ],
-    },
-    75:{
-      general:[
-        {icon:"🌊",t:"Allow grief to move through you",d:"Grief resisted stays stuck. Write about what you've lost. Let it be felt rather than pushed down."},
-        {icon:"👥",t:"Join a support group",d:"Shared grief is lighter grief. Others who understand your loss help you feel less alone."},
-        {icon:"🕯️",t:"Create a ritual of remembrance",d:"A small ritual — lighting a candle, visiting a place — honours loss without being consumed by it."},
-        {icon:"🌱",t:"Look for what remains",d:"Gently ask: what is still here? What has not been lost? This is not denial — it's balance."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Grief Release Breath",d:"Long inhale, then exhale with a soft audible 'haaa' sound. The sound on the exhale opens the throat and chest where grief is held.",steps:["Inhale deeply for 4 counts","Open mouth slightly","Exhale with soft 'haaaa' sound","Feel chest soften","Repeat 8 times"]},
-        {icon:"💨",t:"Coherence Breathing (5-5)",d:"Inhale 5 counts, exhale 5 counts. This creates heart rate variability coherence — scientifically shown to reduce emotional pain and depression.",steps:["Inhale: 1-2-3-4-5","Exhale: 1-2-3-4-5","No holds — continuous flow","10 minutes for full effect","Use during waves of grief"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Acknowledge before you rise",d:"Before getting up, place a hand on your chest and say: 'I am grieving. That is okay. I will move gently today.' Grief needs acknowledgement, not suppression.",time:"Morning · 1 min"},
-        {icon:"🌙",t:"Evening: Write a letter to what you lost",d:"Once a week, write a short letter to the person, version of yourself, or thing you are grieving. Not to fix it — just to express it.",time:"Weekly · 10 min"},
-        {icon:"🧴",t:"Daily: Body care ritual",d:"Grief disconnects us from the body. One simple act of physical care — a warm shower, lotion, gentle stretching — says 'this body still deserves care.'",time:"Daily · 5 min"},
-      ],
-    },
-    100:{
-      general:[
-        {icon:"🔍",t:"Name your fear precisely",d:"Vague fear is more powerful than named fear. Write exactly what you are afraid of. Specificity reduces anxiety's hold."},
-        {icon:"🧠",t:"Challenge catastrophic thinking",d:"Ask: what is the most realistic outcome, not the worst? Fear exaggerates. Reality is usually more manageable."},
-        {icon:"🛡️",t:"Build a safety net",d:"Fear often reflects real vulnerability. Practical steps — savings, skills, relationships — reduce the legitimate basis for fear."},
-        {icon:"🐾",t:"Take one small step toward the fear",d:"Avoidance grows fear. Approach shrinks it. Find the smallest possible step and take it today."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"4-7-8 Breathing (Anti-Anxiety Breath)",d:"The 4-7-8 pattern activates the vagus nerve and rapidly reduces the physiological fear response. Use whenever anxiety spikes.",steps:["Inhale quietly: 4 counts","Hold breath: 7 counts","Exhale completely: 8 counts","This is one cycle","Repeat 4 cycles","Do twice daily"]},
-        {icon:"💨",t:"Physiological Sigh (double inhale)",d:"A double inhale through the nose followed by a long exhale. This is the fastest known way to reduce acute stress — used by Navy SEALs.",steps:["Inhale through nose","At the top — sniff again to fill","Long slow exhale through mouth","Repeat 3 times","Instant calming effect"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Name today's fear + one action",d:"Write: 'Today I am afraid of ___.' Then write one small action you will take anyway. Fear loses power when you act in its presence.",time:"Morning · 3 min"},
-        {icon:"🌙",t:"Evening: Fear vs Reality check",d:"Review your day. Write: 'I feared ___ would happen. What actually happened was ___.' Fear's predictions are almost always worse than reality.",time:"Evening · 3 min"},
-        {icon:"🧘",t:"Daily: 5-minute body scan",d:"Close your eyes. Notice where fear lives in your body — tight chest, stomach, throat. Breathe directly into that spot. The body relaxes when it is acknowledged.",time:"Any time · 5 min"},
-      ],
-    },
-    125:{
-      general:[
-        {icon:"⏸️",t:"Pause between urge and action",d:"Desire creates endless craving. Practice pausing before acting on any impulse. The pause builds freedom."},
-        {icon:"🙏",t:"Gratitude for what you already have",d:"Write three things you already have that you once desperately wanted. Desire says 'not enough.' Gratitude says 'enough.'"},
-        {icon:"🎯",t:"Identify the real need beneath the want",d:"Ask: is this desire meeting a real need — connection, security, respect — or filling a void? Understanding the real need opens better solutions."},
-        {icon:"📵",t:"Reduce advertising and media exposure",d:"Much of desire is manufactured. Reducing inputs that create artificial wants is a form of mental hygiene."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Counting Breath (craving interrupter)",d:"When a craving or desire spikes, count your breaths from 1 to 10, then start again. This interrupts the neurological craving loop.",steps:["Desire arises — don't act","Close eyes if possible","Breathe in: count '1'","Breathe out: count '2'","Continue to 10","Start again — urge usually passes by round 2"]},
-        {icon:"💨",t:"Belly Breathing (satisfaction breath)",d:"Deep belly breathing activates the body's rest-and-digest mode, which reduces the feeling of lack and urgency that drives craving.",steps:["Place hand on belly","Breathe in — belly rises","Breathe out — belly falls","Slow: 4 in, 6 out","5 minutes to feel satisfied rather than wanting"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Set an intention of 'enough'",d:"Before checking your phone, say: 'Today I already have enough. I am enough.' This sets a context for the day that counteracts constant wanting.",time:"Morning · 1 min"},
-        {icon:"🌙",t:"Evening: Three things I enjoyed today",d:"Not things you acquired — experiences. A conversation. A taste. A moment. This trains the brain to find satisfaction in presence rather than possession.",time:"Evening · 3 min"},
-        {icon:"⏱️",t:"Daily: 24-hour rule on purchases",d:"Before any non-essential purchase or indulgence, wait 24 hours. Most cravings pass. This single habit breaks the automatic desire-action loop.",time:"Ongoing practice"},
-      ],
-    },
-    150:{
-      general:[
-        {icon:"❤️",t:"Find the hurt beneath the anger",d:"Anger almost always covers hurt, fear, or injustice. Ask: what am I really feeling underneath this?"},
-        {icon:"🏋️",t:"Use physical outlets for anger energy",d:"Exercise, sport, or physical work channels anger healthily rather than letting it explode at others."},
-        {icon:"⏸️",t:"Practice the pause",d:"Between trigger and response, create space. Even counting to ten changes the pattern of reactive anger."},
-        {icon:"🕊️",t:"Forgiveness as a practice",d:"Forgiveness doesn't excuse others. It frees you from carrying their weight. Start small — forgive one minor slight per week."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Lion's Breath (anger release)",d:"Open your mouth wide, stick out your tongue, and exhale forcefully with a 'haaa' sound. This releases suppressed anger safely through the breath.",steps:["Inhale deeply through nose","Open mouth wide, extend tongue","Exhale forcefully: 'HAAAA'","Eyes wide open during exhale","Repeat 5 times","Feel the release of stored tension"]},
-        {icon:"💨",t:"Cooling Breath (Sitali Pranayama)",d:"Curl your tongue or breathe through slightly parted teeth. The cooling sensation counteracts the heat of anger and quickly reduces arousal.",steps:["Curl tongue into a tube (or part teeth)","Inhale through the 'tube' — feel the cool air","Close mouth","Exhale slowly through nose","Repeat 8 times","Anger's heat begins to cool"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Anger inventory",d:"Ask: 'Is there any unresolved anger I'm carrying today?' If yes, name it in writing. Named anger loses much of its unconscious power.",time:"Morning · 2 min"},
-        {icon:"🌙",t:"Evening: What was I really feeling?",d:"Review any anger from the day. Ask: underneath that anger — was there fear? Hurt? Injustice? Writing the real feeling begins to resolve it.",time:"Evening · 4 min"},
-        {icon:"🏃",t:"Daily: Physical movement — minimum 20 min",d:"Anger is energy. Without a physical outlet it turns inward or explodes outward. Daily movement is the simplest anger regulation practice available.",time:"Daily · 20 min"},
-      ],
-    },
-    175:{
-      general:[
-        {icon:"🔎",t:"Notice when pride becomes defence",d:"Pride uses superiority to avoid vulnerability. Ask: where am I using 'being better' to avoid feeling not enough?"},
-        {icon:"👂",t:"Practice genuine curiosity",d:"Ask people questions and actually listen. Pride closes us off. Curiosity reveals that others have much to teach."},
-        {icon:"🙋",t:"Acknowledge one mistake per day",d:"Pride hates admitting error. Acknowledging small mistakes builds the humility that opens the door to Courage."},
-        {icon:"🎓",t:"Find a mentor or teacher",d:"Placing yourself in a learning position dismantles the need to be the best in the room."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Humble Breath (slow nostril breathing)",d:"Slow nasal breathing reduces cortisol and physiologically reduces the feeling of threat that keeps pride on guard. Humility is a nervous system state.",steps:["Breathe only through nose","Slow the breath to 5-6 per minute","Inhale: 5 counts","Exhale: 5 counts","10 minutes daily","Notice softening of the need to defend"]},
-        {icon:"💨",t:"Equal Breathing with Pause",d:"Inhale 4, hold 2, exhale 4, hold 2. The equal rhythm creates balance and dissolves the agitated quality of pride-based vigilance.",steps:["Inhale: 4 counts","Hold: 2 counts","Exhale: 4 counts","Hold: 2 counts","Repeat 10 cycles","Let go of the need to perform"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Ask 'what can I learn today?'",d:"Start each day with the question of a student rather than an expert. This one shift in orientation begins the move from Pride toward Courage.",time:"Morning · 1 min"},
-        {icon:"🌙",t:"Evening: Who helped me today?",d:"Write down every person whose contribution made your day possible — the person who made your coffee, the colleague who answered a question. Gratitude dissolves pride.",time:"Evening · 3 min"},
-        {icon:"🤲",t:"Weekly: Anonymous service",d:"Do one helpful act per week that no one will know you did. The ego gets nothing — and that is precisely the point.",time:"Weekly · any duration"},
-      ],
-    },
-  },
+    20:{general:[{icon:"🌱",t:"Practice self-compassion daily",d:"Write one kind sentence to yourself each morning. Shame dissolves through self-forgiveness, not self-punishment."},{icon:"🤝",t:"Seek professional support",d:"A therapist provides a safe space to process deep shame. You don't have to carry this alone."},{icon:"🕯️",t:"Find one reason to stay present",d:"Identify a single person, pet, or purpose that gives you a reason to engage with today."},{icon:"📖",t:"Read stories of recovery",d:"Others have healed from shame. Brené Brown's work on shame resilience is a powerful starting point."}],breathing:[{icon:"🌬️",t:"Extended Exhale Breath (5-7)",d:"Inhale for 5 counts, exhale slowly for 7. The longer exhale signals safety to the body.",steps:["Inhale: 1-2-3-4-5","Exhale slowly: 1-2-3-4-5-6-7","Repeat 6 times","Use whenever shame arises"]},{icon:"💨",t:"Hand-on-Heart Breathing",d:"Place one hand on your heart. Breathe in warmth, breathe out tension.",steps:["Place hand on heart","Breathe in: feel warmth","Breathe out: release tightness","Whisper 'I am enough' on each exhale"]}],routine:[{icon:"☀️",t:"Morning: 2-min self-compassion ritual",d:"On waking, place hand on heart and say: 'I am here. I am trying. That is enough.' Then take 5 slow breaths.",time:"Morning · 2 min"},{icon:"🌙",t:"Evening: One kind thing journal",d:"Each night write one thing you did today that took any effort at all — no matter how small.",time:"Evening · 3 min"},{icon:"🚶",t:"Daily: 10-min sunlight walk",d:"Step outside every day. Sunlight, movement, and nature are the simplest antidotes to shame's darkness.",time:"Any time · 10 min"}]},
+    30:{general:[{icon:"🔍",t:"Distinguish guilt from shame",d:"Guilt says 'I did something bad.' Shame says 'I am bad.' Focus on the action, not your identity."},{icon:"✍️",t:"Start a forgiveness journal",d:"Each day write one thing you forgive yourself for — not to excuse it, but to stop the endless punishment."},{icon:"💬",t:"Talk to someone you trust",d:"Saying guilt out loud to a trusted person makes it smaller. Secrets give guilt its power."},{icon:"🔧",t:"Make one small amend",d:"A small step toward repair — even just acknowledging something internally — begins to release guilt."}],breathing:[{icon:"🌬️",t:"4-4-4-4 Box Breathing",d:"Equal counts of inhale, hold, exhale, hold. Brings the nervous system to neutral.",steps:["Inhale: 4 counts","Hold: 4 counts","Exhale: 4 counts","Hold: 4 counts","Repeat 5 rounds"]},{icon:"💨",t:"Sighing Release Breath",d:"A long audible sigh physiologically releases held tension and guilt energy.",steps:["Breathe in normally","Open mouth wide","Let out a long slow sigh","Feel the release","Repeat 3 times"]}],routine:[{icon:"☀️",t:"Morning: Intention setting",d:"Each morning choose one small action that aligns with who you want to be — not who you fear you are.",time:"Morning · 2 min"},{icon:"🌙",t:"Evening: Guilt audit",d:"Ask: 'Is this guilt pointing to something I can repair, or is it just punishment?' If repair — plan one step.",time:"Evening · 5 min"},{icon:"🧘",t:"Midday: 5-min stillness",d:"Sit quietly, observe your thoughts without following them. This builds the gap between guilt and identity.",time:"Midday · 5 min"}]},
+    50:{general:[{icon:"⚡",t:"Take one tiny action each day",d:"Apathy is broken by movement, not motivation. Do one tiny thing and let the feeling follow."},{icon:"🌿",t:"Connect with one living thing",d:"A plant, pet, or person that needs you. Responsibility is a powerful antidote to apathy."},{icon:"📺",t:"Reduce numbing behaviours",d:"Identify what you use to avoid feeling — screens, food, alcohol. Feeling something is better than nothing."},{icon:"🏔️",t:"Lower the bar radically",d:"Don't aim for happiness. Aim for slightly less hopeless. Small wins build momentum."}],breathing:[{icon:"🌬️",t:"Stimulating Bellows Breath",d:"Short, sharp inhales and exhales. Activates energy when everything feels flat.",steps:["Sit upright","Rapid inhale through nose (1 sec)","Rapid exhale through nose (1 sec)","Repeat 10 times","Breathe normally 30 sec","Do 3 rounds"]},{icon:"💨",t:"Energising Morning Breath",d:"Three deep breaths before getting out of bed. Signals to the body: 'Today begins.'",steps:["Still lying down: breathe in deeply","Exhale completely","Second breath: even deeper","Third breath: fill lungs fully","Now get up"]}],routine:[{icon:"☀️",t:"Morning: One physical action before phone",d:"Before any screen, do one physical thing — wash your face, drink water, step outside.",time:"Morning · 2 min"},{icon:"🌙",t:"Evening: Name one thing that existed today",d:"Not 'good things' — just things that existed. A colour. Food you ate. A sound you heard.",time:"Evening · 2 min"},{icon:"🚶",t:"Daily: 10-min walk, no phone",d:"Walk outside without any device. Movement, light, and silence are powerful antidotes to apathy.",time:"Any time · 10 min"}]},
+    75:{general:[{icon:"🌊",t:"Allow grief to move through you",d:"Grief resisted stays stuck. Write about what you've lost. Let it be felt rather than pushed down."},{icon:"👥",t:"Join a support group",d:"Shared grief is lighter grief. Others who understand your loss help you feel less alone."},{icon:"🕯️",t:"Create a ritual of remembrance",d:"A small ritual — lighting a candle, visiting a place — honours loss without being consumed by it."},{icon:"🌱",t:"Look for what remains",d:"Gently ask: what is still here? What has not been lost? This is not denial — it's balance."}],breathing:[{icon:"🌬️",t:"Grief Release Breath",d:"Long inhale, then exhale with a soft 'haaa' sound. Opens the chest where grief is held.",steps:["Inhale deeply: 4 counts","Open mouth slightly","Exhale with soft 'haaaa' sound","Feel chest soften","Repeat 8 times"]},{icon:"💨",t:"Coherence Breathing (5-5)",d:"Inhale 5 counts, exhale 5 counts. Shown to reduce emotional pain and depression.",steps:["Inhale: 1-2-3-4-5","Exhale: 1-2-3-4-5","No holds — continuous flow","10 minutes for full effect","Use during waves of grief"]}],routine:[{icon:"☀️",t:"Morning: Acknowledge before you rise",d:"Place a hand on your chest and say: 'I am grieving. That is okay. I will move gently today.'",time:"Morning · 1 min"},{icon:"🌙",t:"Weekly: Write a letter to what you lost",d:"Write a short letter to the person or thing you are grieving. Not to fix it — just to express it.",time:"Weekly · 10 min"},{icon:"🧴",t:"Daily: Body care ritual",d:"One simple act of physical care — a warm shower, lotion, gentle stretching — says 'this body deserves care.'",time:"Daily · 5 min"}]},
+    100:{general:[{icon:"🔍",t:"Name your fear precisely",d:"Vague fear is more powerful than named fear. Write exactly what you are afraid of."},{icon:"🧠",t:"Challenge catastrophic thinking",d:"Ask: what is the most realistic outcome, not the worst? Fear exaggerates. Reality is more manageable."},{icon:"🛡️",t:"Build a safety net",d:"Practical steps — savings, skills, relationships — reduce the legitimate basis for fear."},{icon:"🐾",t:"Take one small step toward the fear",d:"Avoidance grows fear. Approach shrinks it. Find the smallest possible step and take it today."}],breathing:[{icon:"🌬️",t:"4-7-8 Anti-Anxiety Breath",d:"Activates the vagus nerve and rapidly reduces the physiological fear response.",steps:["Inhale quietly: 4 counts","Hold breath: 7 counts","Exhale completely: 8 counts","Repeat 4 cycles","Do twice daily"]},{icon:"💨",t:"Physiological Sigh",d:"A double inhale through the nose followed by a long exhale. Fastest way to reduce acute stress.",steps:["Inhale through nose","At the top — sniff again to fill","Long slow exhale through mouth","Repeat 3 times","Instant calming effect"]}],routine:[{icon:"☀️",t:"Morning: Name today's fear + one action",d:"Write: 'Today I am afraid of ___.' Then write one small action you will take anyway.",time:"Morning · 3 min"},{icon:"🌙",t:"Evening: Fear vs Reality check",d:"Write: 'I feared ___ would happen. What actually happened was ___.' Fear's predictions are usually wrong.",time:"Evening · 3 min"},{icon:"🧘",t:"Daily: 5-min body scan",d:"Notice where fear lives in your body. Breathe directly into that spot. The body relaxes when acknowledged.",time:"Any time · 5 min"}]},
+    125:{general:[{icon:"⏸️",t:"Pause between urge and action",d:"Practice pausing before acting on any impulse. The pause builds freedom."},{icon:"🙏",t:"Gratitude for what you already have",d:"Write three things you already have that you once wanted. Desire says 'not enough.' Gratitude says 'enough.'"},{icon:"🎯",t:"Identify the real need beneath the want",d:"Is this desire meeting a real need — connection, security, respect — or filling a void?"},{icon:"📵",t:"Reduce advertising and media exposure",d:"Much of desire is manufactured. Reducing artificial wants is a form of mental hygiene."}],breathing:[{icon:"🌬️",t:"Counting Breath (craving interrupter)",d:"Count your breaths from 1 to 10. Interrupts the neurological craving loop.",steps:["Desire arises — don't act","Close eyes if possible","Breathe in: count '1'","Breathe out: count '2'","Continue to 10","Start again — urge usually passes"]},{icon:"💨",t:"Belly Breathing (satisfaction breath)",d:"Deep belly breathing reduces the feeling of lack and urgency that drives craving.",steps:["Place hand on belly","Breathe in — belly rises","Breathe out — belly falls","Slow: 4 in, 6 out","5 minutes to feel satisfied"]}],routine:[{icon:"☀️",t:"Morning: Set an intention of 'enough'",d:"Before checking your phone, say: 'Today I already have enough. I am enough.'",time:"Morning · 1 min"},{icon:"🌙",t:"Evening: Three things I enjoyed today",d:"Not things you acquired — experiences. A conversation. A taste. A moment.",time:"Evening · 3 min"},{icon:"⏱️",t:"Daily: 24-hour rule on purchases",d:"Before any non-essential purchase, wait 24 hours. Most cravings pass.",time:"Ongoing practice"}]},
+    150:{general:[{icon:"❤️",t:"Find the hurt beneath the anger",d:"Anger almost always covers hurt, fear, or injustice. Ask: what am I really feeling underneath this?"},{icon:"🏋️",t:"Use physical outlets for anger energy",d:"Exercise, sport, or physical work channels anger healthily."},{icon:"⏸️",t:"Practice the pause",d:"Between trigger and response, create space. Even counting to ten changes the pattern of reactive anger."},{icon:"🕊️",t:"Forgiveness as a practice",d:"Forgiveness doesn't excuse others. It frees you from carrying their weight."}],breathing:[{icon:"🌬️",t:"Lion's Breath (anger release)",d:"Open mouth wide, stick out tongue, exhale forcefully with a 'haaa' sound. Releases suppressed anger.",steps:["Inhale deeply through nose","Open mouth wide, extend tongue","Exhale forcefully: 'HAAAA'","Eyes wide open during exhale","Repeat 5 times"]},{icon:"💨",t:"Cooling Breath (Sitali)",d:"Breathe through slightly parted teeth. The cooling sensation counteracts the heat of anger.",steps:["Part teeth slightly","Inhale through parted teeth — feel cool air","Close mouth","Exhale slowly through nose","Repeat 8 times"]}],routine:[{icon:"☀️",t:"Morning: Anger inventory",d:"Ask: 'Is there any unresolved anger I'm carrying today?' If yes, name it in writing.",time:"Morning · 2 min"},{icon:"🌙",t:"Evening: What was I really feeling?",d:"Review any anger from the day. Underneath it — was there fear? Hurt? Injustice?",time:"Evening · 4 min"},{icon:"🏃",t:"Daily: Physical movement 20+ min",d:"Anger is energy. Without a physical outlet it turns inward or explodes outward.",time:"Daily · 20 min"}]},
+    175:{general:[{icon:"🔎",t:"Notice when pride becomes defence",d:"Ask: where am I using 'being better' to avoid feeling not enough?"},{icon:"👂",t:"Practice genuine curiosity",d:"Ask people questions and actually listen. Curiosity reveals that others have much to teach."},{icon:"🙋",t:"Acknowledge one mistake per day",d:"Acknowledging small mistakes builds the humility that opens the door to Courage."},{icon:"🎓",t:"Find a mentor or teacher",d:"Placing yourself in a learning position dismantles the need to be the best in the room."}],breathing:[{icon:"🌬️",t:"Humble Breath (slow nostril breathing)",d:"Slow nasal breathing reduces cortisol and the feeling of threat that keeps pride on guard.",steps:["Breathe only through nose","Slow breath to 5-6 per minute","Inhale: 5 counts","Exhale: 5 counts","10 minutes daily"]},{icon:"💨",t:"Equal Breathing with Pause",d:"Inhale 4, hold 2, exhale 4, hold 2. Creates balance and dissolves pride-based vigilance.",steps:["Inhale: 4 counts","Hold: 2 counts","Exhale: 4 counts","Hold: 2 counts","Repeat 10 cycles"]}],routine:[{icon:"☀️",t:"Morning: Ask 'what can I learn today?'",d:"Start each day with the question of a student rather than an expert.",time:"Morning · 1 min"},{icon:"🌙",t:"Evening: Who helped me today?",d:"Write every person whose contribution made your day possible. Gratitude dissolves pride.",time:"Evening · 3 min"},{icon:"🤲",t:"Weekly: Anonymous service",d:"Do one helpful act per week that no one will know you did. The ego gets nothing — that is the point.",time:"Weekly"}]}},
   "Self-Empowerment":{
-    200:{
-      general:[
-        {icon:"🦁",t:"Expand your comfort zone weekly",d:"Courage grows by action. Each week do one thing that slightly scares you. Your threshold of what feels manageable expands over time."},
-        {icon:"🤝",t:"Build self-trust through kept promises",d:"Make small commitments to yourself and keep them. Each kept promise builds internal credibility."},
-        {icon:"📚",t:"Study what you fear",d:"Knowledge reduces fear. If you fear failure, study resilience. If you fear judgement, study stoicism. Understanding disarms threats."},
-        {icon:"🔄",t:"Reframe failure as information",d:"Courage increases when failure is no longer catastrophic. Every failure tells you something useful."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Power Breath (Wim Hof light version)",d:"30 deep, rhythmic breaths followed by a natural breath hold. This creates a mild altered state that builds tolerance for discomfort — the foundation of courage.",steps:["30 deep belly-to-chest inhales","Let exhale go naturally (don't force)","After 30th breath: breathe out and hold","Hold comfortably as long as possible","Inhale deeply, hold 15 sec","This is one round — do 3 rounds"]},
-        {icon:"💨",t:"Victory Breath (before challenges)",d:"One deep breath in through the nose, arms spread wide, then exhale fully. Expand physically as you breathe. This posture-breath combination increases confidence hormones.",steps:["Stand tall or sit upright","Spread arms slightly wide","Inhale deeply — feel your chest expand","Hold 2 seconds at the top","Exhale fully — arms back in","Do this 3 times before any challenge"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: One courageous intention",d:"Each morning name one thing you will do today that requires courage — however small. 'I will speak honestly in that meeting.' 'I will ask for help.'",time:"Morning · 2 min"},
-        {icon:"🌙",t:"Evening: Courage log",d:"Write one courageous act from today — anything that required you to override fear. Over weeks this journal becomes proof of who you are becoming.",time:"Evening · 3 min"},
-        {icon:"🧊",t:"Daily: Cold water finish to shower",d:"End your shower with 30 seconds of cold water. This trains the nervous system to face discomfort with control — the physical equivalent of courage.",time:"Daily · 30 sec"},
-      ],
-    },
-    250:{
-      general:[
-        {icon:"📋",t:"Build trust through evidence",d:"Review times in your past when things worked out even when you worried. Your history is full of evidence that the universe supports you."},
-        {icon:"🌊",t:"Reduce the need to control",d:"Practice letting small things unfold without intervention. Release attachment to specific results."},
-        {icon:"✅",t:"Say yes to more opportunities",d:"Neutrality can become passive. Begin saying yes to experiences and connections you would normally let pass."},
-        {icon:"🎁",t:"Serve others without agenda",d:"Find one way per week to help without expectation of return. This moves Neutrality toward Willingness."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Natural Breath Awareness",d:"Simply observe your breath without controlling it. This is the breath practice of equanimity — the foundation of Neutrality. Non-doing as a practice.",steps:["Sit comfortably","Close eyes","Do not control the breath","Simply observe: in... out...","When mind wanders — return","10-20 minutes daily builds deep trust"]},
-        {icon:"💨",t:"4-6 Relaxation Breathing",d:"Inhale for 4, exhale for 6. The longer exhale activates the parasympathetic nervous system and trains the body toward the ease and trust of Neutrality.",steps:["Inhale: 4 counts","Exhale slowly: 6 counts","No holds","Continuous gentle flow","10 minutes for full effect","Practice twice daily"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Trust affirmation",d:"Before rising, say: 'Today I trust the process. I don't need to control what I cannot control.' Then take 5 slow breaths and let the day begin.",time:"Morning · 2 min"},
-        {icon:"🌙",t:"Evening: Release list",d:"Write three things you were trying to control today that are not truly yours to control. Then write: 'I release these.' This is the practice of Neutrality.",time:"Evening · 4 min"},
-        {icon:"🌿",t:"Daily: 10 min in nature with no agenda",d:"Sit outside — park bench, garden, anywhere. Do nothing. Have no purpose. Nature is the greatest teacher of Neutrality.",time:"Daily · 10 min"},
-      ],
-    },
-    310:{
-      general:[
-        {icon:"✅",t:"Say yes to growth opportunities",d:"Willingness thrives on momentum. Embrace courses, projects, and challenges that stretch you."},
-        {icon:"🎯",t:"Convert hope into specific goals",d:"Willingness is hopeful but can stay passive. Convert hope into goals with dates and steps."},
-        {icon:"🌱",t:"Invest in meaningful relationships",d:"At Willingness your positive energy attracts others. Deepen a few relationships — this is the soil Acceptance grows from."},
-        {icon:"🙏",t:"Develop a spiritual or reflective practice",d:"A practice — prayer, meditation, philosophy — accelerates the journey to Acceptance and beyond."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Optimism Breath (expansive breathing)",d:"Breathe into the upper chest — feel it expand forward and sideways. Expansive breathing creates expansive thinking and reinforces the open orientation of Willingness.",steps:["Sit or stand tall","Breathe into upper chest first","Then expand sideways — ribs out","Hold gently for 3 counts","Exhale fully — soften","Repeat 8 times — feel openness grow"]},
-        {icon:"💨",t:"Alternate Nostril Breathing (Nadi Shodhana)",d:"Block one nostril, inhale through the other. Alternate. This balances both brain hemispheres and creates the calm clarity that supports optimistic action.",steps:["Right thumb closes right nostril","Inhale left nostril: 4 counts","Close left with ring finger","Open right — exhale: 4 counts","Inhale right: 4 counts","Close right — exhale left: 4 counts","This is one cycle — do 8 cycles"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Three things I'm looking forward to",d:"Each morning name three things — however small — you are genuinely looking forward to today. This primes the brain toward optimism and Willingness.",time:"Morning · 2 min"},
-        {icon:"🌙",t:"Evening: Progress over perfection",d:"Write one way you made progress today — not achievement, just forward motion. Willingness is about direction, not destination.",time:"Evening · 2 min"},
-        {icon:"📚",t:"Daily: 15 min of learning",d:"Read, listen, or watch something that teaches you something new every day. Willingness grows when the mind is fed with new possibility.",time:"Daily · 15 min"},
-      ],
-    },
-    350:{
-      general:[
-        {icon:"🕊️",t:"Forgive your past self",d:"Acceptance often forgives others before the self. Turn forgiveness inward — to who you were before you knew what you know now."},
-        {icon:"🌊",t:"Practise non-resistance",d:"When difficult emotions arise, breathe and say 'I allow this.' Acceptance is a muscle built by use."},
-        {icon:"🎓",t:"Mentor someone earlier in their journey",d:"Teaching what you know consolidates and deepens it. Offer your time to someone who is where you once were."},
-        {icon:"🌿",t:"Spend time in nature",d:"Nature operates at perfect Acceptance. Time outdoors recalibrates the nervous system toward equanimity."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Acceptance Breath (allow it all in)",d:"Breathe in with the intention of accepting everything — even what is uncomfortable. On the exhale, release the need for things to be different. A meditation in two breaths.",steps:["Inhale: silently say 'I accept this'","Exhale: silently say 'I release resistance'","Breathe slowly","Let the words sink in","10 minutes changes your relationship with reality"]},
-        {icon:"💨",t:"Three-Part Yogic Breath",d:"Fill belly first, then ribcage, then chest. Exhale in reverse. This complete breath is the breath of wholeness — accepting and engaging all of the body.",steps:["Inhale — belly fills first","Continue — ribcage expands","Complete — chest rises","Exhale — chest softens","Ribcage releases","Belly draws gently in","Repeat slowly for 10 minutes"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Acceptance statement",d:"Each morning say: 'Today I accept what is. I respond with wisdom rather than react with resistance.' Then name one thing in your life you are choosing to accept.",time:"Morning · 2 min"},
-        {icon:"🌙",t:"Evening: Forgiveness round",d:"Ask: 'Who or what am I still resisting or resenting?' Write it down, then write: 'I choose to accept this — not because it is right, but because peace is worth more than the fight.'",time:"Evening · 5 min"},
-        {icon:"🧘",t:"Daily: 10-min meditation on 'what is'",d:"Sit quietly. Observe whatever arises — thoughts, sensations, emotions — and simply let them be without needing to change them. This is the practice of Acceptance.",time:"Daily · 10 min"},
-      ],
-    },
-    400:{
-      general:[
-        {icon:"💡",t:"Move from knowledge to wisdom",d:"Reason can become trapped in analysis. Begin asking 'what is the right thing to do?' not just 'what is true?' — that bridges Reason to Love."},
-        {icon:"❤️",t:"Develop emotional alongside intellectual intelligence",d:"Reason sometimes bypasses feeling. Engage with how things feel, not just what they mean. Emotion is data too."},
-        {icon:"👂",t:"Practice compassionate listening",d:"Listen to understand deeply — not just logically but emotionally. This is the bridge from Reason to Love."},
-        {icon:"🌍",t:"Serve a cause larger than yourself",d:"Reason sees what needs to change. Channel that clarity into action for others — this is the doorway to Love."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Coherence Breathing (heart-mind sync)",d:"Breathe at exactly 5 seconds in, 5 seconds out. At this rate, the heart and brain enter coherence — a state of peak clarity where Reason and wisdom align.",steps:["Inhale: exactly 5 seconds","Exhale: exactly 5 seconds","No holds","Continuous smooth rhythm","20 minutes: full coherence state","Use before important thinking or decisions"]},
-        {icon:"💨",t:"Insight Breath (before problem solving)",d:"Three deep, slow breaths before any significant mental task. This oxygenates the prefrontal cortex and shifts the brain into its highest reasoning mode.",steps:["Before any complex thinking: pause","Inhale deeply — 6 counts","Hold gently — 2 counts","Exhale fully — 8 counts","Repeat 3 times","Now begin — clarity is significantly improved"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Learning intention",d:"Ask each morning: 'What is one thing I want to understand better today?' Then direct some of your attention toward it. Reason grows through deliberate inquiry.",time:"Morning · 2 min"},
-        {icon:"🌙",t:"Evening: Heart check-in",d:"Before sleep, ask: 'Did my reason serve love today, or did it serve my ego?' This question bridges the gap between Reason (400) and Love (500).",time:"Evening · 3 min"},
-        {icon:"📖",t:"Daily: 20 min of deep reading",d:"Read something that challenges and expands your thinking — philosophy, science, wisdom literature. Reason grows by being stretched.",time:"Daily · 20 min"},
-      ],
-    },
-  },
+    200:{general:[{icon:"🦁",t:"Expand your comfort zone weekly",d:"Each week do one thing that slightly scares you. Your threshold of what feels manageable expands over time."},{icon:"🤝",t:"Build self-trust through kept promises",d:"Make small commitments to yourself and keep them. Each kept promise builds internal credibility."},{icon:"📚",t:"Study what you fear",d:"Knowledge reduces fear. If you fear failure, study resilience. Understanding disarms threats."},{icon:"🔄",t:"Reframe failure as information",d:"Every failure tells you something useful. Begin treating it that way."}],breathing:[{icon:"🌬️",t:"Power Breath (Wim Hof light version)",d:"30 deep rhythmic breaths, then a natural hold. Builds tolerance for discomfort — the foundation of courage.",steps:["30 deep belly-to-chest inhales","Let exhale go naturally","After 30th: breathe out and hold","Hold comfortably","Inhale deeply, hold 15 sec","Do 3 rounds"]},{icon:"💨",t:"Victory Breath (before challenges)",d:"Deep inhale with arms spread wide, then exhale fully. Increases confidence hormones.",steps:["Stand tall","Spread arms slightly","Inhale deeply — chest expands","Hold 2 seconds at top","Exhale fully","Do 3 times before any challenge"]}],routine:[{icon:"☀️",t:"Morning: One courageous intention",d:"Each morning name one thing you will do today that requires courage — however small.",time:"Morning · 2 min"},{icon:"🌙",t:"Evening: Courage log",d:"Write one courageous act from today. Over weeks this journal becomes proof of who you are becoming.",time:"Evening · 3 min"},{icon:"🧊",t:"Daily: Cold water finish to shower",d:"End your shower with 30 seconds of cold water. Trains the nervous system to face discomfort with control.",time:"Daily · 30 sec"}]},
+    250:{general:[{icon:"📋",t:"Build trust through evidence",d:"Review times in your past when things worked out even when you worried."},{icon:"🌊",t:"Reduce the need to control",d:"Practice letting small things unfold without intervention. Release attachment to specific results."},{icon:"✅",t:"Say yes to more opportunities",d:"Neutrality can become passive. Begin saying yes to experiences you would normally let pass."},{icon:"🎁",t:"Serve others without agenda",d:"Find one way per week to help without expectation of return."}],breathing:[{icon:"🌬️",t:"Natural Breath Awareness",d:"Simply observe your breath without controlling it. The breath practice of equanimity.",steps:["Sit comfortably","Close eyes","Do not control the breath","Simply observe: in... out...","When mind wanders — return","10-20 minutes daily"]},{icon:"💨",t:"4-6 Relaxation Breathing",d:"Inhale for 4, exhale for 6. Trains the body toward the ease and trust of Neutrality.",steps:["Inhale: 4 counts","Exhale slowly: 6 counts","No holds","Continuous gentle flow","10 minutes for full effect"]}],routine:[{icon:"☀️",t:"Morning: Trust affirmation",d:"Say: 'Today I trust the process. I don't need to control what I cannot control.' Then 5 slow breaths.",time:"Morning · 2 min"},{icon:"🌙",t:"Evening: Release list",d:"Write three things you were trying to control today that are not truly yours to control. Then: 'I release these.'",time:"Evening · 4 min"},{icon:"🌿",t:"Daily: 10 min in nature, no agenda",d:"Sit outside — park, garden, anywhere. Do nothing. Nature is the greatest teacher of Neutrality.",time:"Daily · 10 min"}]},
+    310:{general:[{icon:"✅",t:"Say yes to growth opportunities",d:"Willingness thrives on momentum. Embrace courses, projects, and challenges that stretch you."},{icon:"🎯",t:"Convert hope into specific goals",d:"Willingness is hopeful but can stay passive. Convert hope into goals with dates and steps."},{icon:"🌱",t:"Invest in meaningful relationships",d:"At Willingness your positive energy attracts others. Deepen a few relationships."},{icon:"🙏",t:"Develop a reflective practice",d:"A practice — prayer, meditation, philosophy — accelerates the journey to Acceptance and beyond."}],breathing:[{icon:"🌬️",t:"Expansive Breathing",d:"Breathe into the upper chest — feel it expand forward and sideways. Creates expansive thinking.",steps:["Sit or stand tall","Breathe into upper chest first","Then expand sideways — ribs out","Hold gently for 3 counts","Exhale fully — soften","Repeat 8 times"]},{icon:"💨",t:"Alternate Nostril Breathing",d:"Balances both brain hemispheres and creates the calm clarity that supports optimistic action.",steps:["Right thumb closes right nostril","Inhale left: 4 counts","Close left with ring finger","Open right — exhale: 4 counts","Inhale right: 4 counts","Exhale left: 4 counts — one cycle"]}],routine:[{icon:"☀️",t:"Morning: Three things I'm looking forward to",d:"Name three things you are genuinely looking forward to today. Primes the brain toward optimism.",time:"Morning · 2 min"},{icon:"🌙",t:"Evening: Progress over perfection",d:"Write one way you made progress today — not achievement, just forward motion.",time:"Evening · 2 min"},{icon:"📚",t:"Daily: 15 min of learning",d:"Read, listen, or watch something that teaches you something new every day.",time:"Daily · 15 min"}]},
+    350:{general:[{icon:"🕊️",t:"Forgive your past self",d:"Turn forgiveness inward — to who you were before you knew what you know now."},{icon:"🌊",t:"Practise non-resistance",d:"When difficult emotions arise, breathe and say 'I allow this.' Acceptance is a muscle."},{icon:"🎓",t:"Mentor someone earlier in their journey",d:"Teaching what you know consolidates and deepens it."},{icon:"🌿",t:"Spend time in nature",d:"Nature operates at perfect Acceptance. Time outdoors recalibrates the nervous system."}],breathing:[{icon:"🌬️",t:"Acceptance Breath",d:"Breathe in with intention of accepting everything. On exhale, release the need for things to be different.",steps:["Inhale: silently say 'I accept this'","Exhale: silently say 'I release resistance'","Breathe slowly","Let the words sink in","10 minutes changes your relationship with reality"]},{icon:"💨",t:"Three-Part Yogic Breath",d:"Fill belly first, then ribcage, then chest. The breath of wholeness.",steps:["Inhale — belly fills first","Continue — ribcage expands","Complete — chest rises","Exhale — chest softens","Ribcage releases","Belly draws gently in"]}],routine:[{icon:"☀️",t:"Morning: Acceptance statement",d:"Say: 'Today I accept what is. I respond with wisdom rather than react with resistance.'",time:"Morning · 2 min"},{icon:"🌙",t:"Evening: Forgiveness round",d:"Ask: 'Who or what am I still resisting?' Then: 'I choose to accept this — peace is worth more than the fight.'",time:"Evening · 5 min"},{icon:"🧘",t:"Daily: 10-min meditation on 'what is'",d:"Observe whatever arises — thoughts, sensations, emotions — and let them be. This is Acceptance.",time:"Daily · 10 min"}]},
+    400:{general:[{icon:"💡",t:"Move from knowledge to wisdom",d:"Begin asking 'what is the right thing to do?' not just 'what is true?' — that bridges Reason to Love."},{icon:"❤️",t:"Develop emotional intelligence",d:"Reason sometimes bypasses feeling. Engage with how things feel, not just what they mean."},{icon:"👂",t:"Practice compassionate listening",d:"Listen to understand deeply — not just logically but emotionally. The bridge to Love."},{icon:"🌍",t:"Serve a cause larger than yourself",d:"Channel your clarity into action for others — this is the doorway to Love."}],breathing:[{icon:"🌬️",t:"Coherence Breathing (heart-mind sync)",d:"Breathe at exactly 5 seconds in, 5 seconds out. Heart and brain enter peak clarity.",steps:["Inhale: exactly 5 seconds","Exhale: exactly 5 seconds","No holds","Continuous smooth rhythm","20 minutes: full coherence state"]},{icon:"💨",t:"Insight Breath (before problem solving)",d:"Three deep breaths before any mental task. Oxygenates the prefrontal cortex.",steps:["Before complex thinking: pause","Inhale deeply — 6 counts","Hold gently — 2 counts","Exhale fully — 8 counts","Repeat 3 times — clarity improves"]}],routine:[{icon:"☀️",t:"Morning: Learning intention",d:"Ask: 'What is one thing I want to understand better today?' Then direct some attention toward it.",time:"Morning · 2 min"},{icon:"🌙",t:"Evening: Heart check-in",d:"Ask: 'Did my reason serve love today, or did it serve my ego?' This bridges Reason (400) to Love (500).",time:"Evening · 3 min"},{icon:"📖",t:"Daily: 20 min of deep reading",d:"Read philosophy, science, or wisdom literature. Reason grows by being stretched.",time:"Daily · 20 min"}]}},
   "Self-Realization":{
-    500:{
-      general:[
-        {icon:"💗",t:"Let love become unconditional",d:"Extend genuine goodwill to strangers, difficult people, and even those who have hurt you. Love that requires conditions is not yet free."},
-        {icon:"🧘",t:"Deepen your contemplative practice",d:"Love at 500 is nourished by silence and presence. Lengthen your meditation and sit with love without needing an object for it."},
-        {icon:"🙏",t:"Surrender the need to fix",d:"Love wants to help. But the next levels require releasing the need to change others. Practice loving people exactly as they are."},
-        {icon:"🔮",t:"Study the nature of awareness",d:"Joy and Peace come from recognising the deeper self beyond the personal story. Non-dual teachings point the way."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Heart-Centred Breathing",d:"Breathe in and out as if through your heart centre in the middle of your chest. On each inhale, feel love expanding. On each exhale, radiate it outward.",steps:["Close eyes","Focus attention on heart centre","Inhale — feel warmth expanding in chest","Exhale — feel it radiating outward","Breathe love in — breathe love out","15 minutes transforms relationship with the world"]},
-        {icon:"💨",t:"Loving-Kindness Breath",d:"With each inhale, silently say 'May I be happy.' With each exhale, 'May all beings be happy.' This is the breath of Love made audible in the mind.",steps:["Breathe naturally","Inhale: 'May I be at peace'","Exhale: 'May all beings be at peace'","Expand outward: loved ones, strangers, all","20 minutes daily at this level","Feel the boundary between self and other soften"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Loving-kindness blessing",d:"On waking, silently send goodwill to five people — starting with yourself, then loved ones, then a neutral person, then someone difficult. This is the Love level's daily practice.",time:"Morning · 5 min"},
-        {icon:"🌙",t:"Evening: Gratitude for others",d:"Write three ways other people enriched your life today. Love at 500 recognises that all good things come through connection.",time:"Evening · 3 min"},
-        {icon:"🤲",t:"Daily: One act of unconditional giving",d:"Each day do one thing for someone with no expectation of anything in return — not even their knowledge of it. This is Love in action.",time:"Daily · variable"},
-      ],
-    },
-    540:{
-      general:[
-        {icon:"✨",t:"Recognise joy as your natural state",d:"Joy is not something you achieve — it is what remains when obstacles are removed. Sit with this truth daily."},
-        {icon:"🌸",t:"Drop voluntary suffering",d:"Joy is incompatible with worry, resentment, and comparison. Begin dropping these as conscious choices, not through forced positivity."},
-        {icon:"🌟",t:"Share your state through presence",d:"Your presence itself uplifts others. Simply being fully present is your greatest gift at this level."},
-        {icon:"🔮",t:"Release attachment to spiritual progress",d:"Paradoxically, striving to reach Peace can prevent it. Rest in what is already here."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Joy Breath (expansive and free)",d:"Breathe without any structure — freely, naturally, even playfully. Let the breath go where it wants. Joy doesn't need technique. It needs permission.",steps:["Sit or stand or lie — anywhere","Release all control of the breath","Let it breathe you","Smile gently","Feel the naturalness of being alive","Stay here as long as you like"]},
-        {icon:"💨",t:"Gratitude Breathing",d:"On each inhale, find something to feel genuinely grateful for. Let the gratitude make the breath deeper. On each exhale, let go of anything that is not joy.",steps:["Inhale — find one genuine gratitude","Let it deepen the breath naturally","Exhale — release what is not joy","Each breath: new gratitude","20 breaths — feel the shift","Do this at any moment of forgetting"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Joy inventory",d:"Before rising, ask: 'What am I genuinely looking forward to today?' Not what you should appreciate — what actually delights you. Follow that thread through the day.",time:"Morning · 2 min"},
-        {icon:"🌙",t:"Evening: Moments of aliveness",d:"Write three moments today when you felt most alive — not most productive or most good, but most alive. Joy lives in these moments.",time:"Evening · 3 min"},
-        {icon:"🎵",t:"Daily: Dance or sing — even briefly",d:"At this level, the body wants to express joy. Two minutes of dancing alone, or singing while you shower, keeps the body aligned with the consciousness.",time:"Daily · 2-5 min"},
-      ],
-    },
-    600:{
-      general:[
-        {icon:"🌌",t:"Abide in stillness",d:"Peace at 600 is not something you do — it is what you are when thought subsides. Your practice now is simply to rest in this recognition."},
-        {icon:"🌟",t:"Be a presence for others",d:"Your role is not to teach but to embody. Your peace is medicine for those around you without any effort on your part."},
-        {icon:"🌊",t:"Continue without expectation",d:"The journey beyond Peace is surrendered entirely. There is nothing to attain. Simply be what you are and allow the unfolding."},
-        {icon:"🙏",t:"Trust the process completely",d:"At Peace, resistance has dissolved. Trust is total. The path forward reveals itself as you walk."},
-      ],
-      breathing:[
-        {icon:"🌬️",t:"Non-Doing Breath",d:"Do not breathe — allow breathing to happen. The subtlest distinction, but at this level it is the whole practice. The breath breathes itself. You are the witness.",steps:["Sit in stillness","Ask: who is breathing?","Notice: breathing happens on its own","Rest as the awareness that observes","Not controlling — witnessing","This is the breath of Peace"]},
-        {icon:"💨",t:"Silence Between Breaths",d:"At the natural pause at the top and bottom of each breath, rest in the silence. This gap between breaths is a doorway to the stillness that is Peace.",steps:["Breathe naturally","At the top of inhale — pause and rest","Notice the silence","At the bottom of exhale — pause and rest","Notice the same silence","Both pauses are the same peace"]},
-      ],
-      routine:[
-        {icon:"☀️",t:"Morning: Sit in silence for 20 minutes",d:"No guidance, no technique, no goal. Simply sit. At this level, sitting without agenda is the most advanced practice available.",time:"Morning · 20 min"},
-        {icon:"🌙",t:"Evening: Complete rest",d:"At 600, rest is not laziness — it is alignment. Sleep early, completely, without guilt. The body at Peace requires deep rest to integrate.",time:"Evening · as needed"},
-        {icon:"🌿",t:"Daily: Extended time in nature",d:"Walk slowly, sit by water, watch the sky. At Peace, nature is not a backdrop — it is a mirror. The stillness outside reflects the stillness within.",time:"Daily · 30+ min"},
-      ],
-    },
-  },
+    500:{general:[{icon:"💗",t:"Let love become unconditional",d:"Extend genuine goodwill to strangers, difficult people, and even those who have hurt you."},{icon:"🧘",t:"Deepen your contemplative practice",d:"Love at 500 is nourished by silence. Sit with love without needing an object for it."},{icon:"🙏",t:"Surrender the need to fix",d:"Practice loving people exactly as they are."},{icon:"🔮",t:"Study the nature of awareness",d:"Joy and Peace come from recognising the deeper self beyond the personal story."}],breathing:[{icon:"🌬️",t:"Heart-Centred Breathing",d:"Breathe as if through your heart. On inhale feel love expanding. On exhale radiate it outward.",steps:["Close eyes","Focus on heart centre","Inhale — warmth expanding in chest","Exhale — radiating outward","15 minutes transforms the world"]},{icon:"💨",t:"Loving-Kindness Breath",d:"Inhale: 'May I be happy.' Exhale: 'May all beings be happy.'",steps:["Breathe naturally","Inhale: 'May I be at peace'","Exhale: 'May all beings be at peace'","Expand to loved ones, strangers, all","20 minutes daily"]}],routine:[{icon:"☀️",t:"Morning: Loving-kindness blessing",d:"Send goodwill to five people — yourself, loved ones, a neutral person, someone difficult.",time:"Morning · 5 min"},{icon:"🌙",t:"Evening: Gratitude for others",d:"Write three ways other people enriched your life today.",time:"Evening · 3 min"},{icon:"🤲",t:"Daily: One act of unconditional giving",d:"Do one thing for someone with no expectation of anything in return.",time:"Daily"}]},
+    540:{general:[{icon:"✨",t:"Recognise joy as your natural state",d:"Joy is what remains when obstacles are removed. Sit with this truth daily."},{icon:"🌸",t:"Drop voluntary suffering",d:"Begin dropping worry, resentment, and comparison as conscious choices."},{icon:"🌟",t:"Share your state through presence",d:"Simply being fully present is your greatest gift at this level."},{icon:"🔮",t:"Release attachment to spiritual progress",d:"Rest in what is already here. The seeking itself is the only obstacle."}],breathing:[{icon:"🌬️",t:"Joy Breath (free and natural)",d:"Breathe without any structure — freely, naturally, even playfully. Joy needs permission, not technique.",steps:["Release all control of the breath","Let it breathe you","Smile gently","Feel the naturalness of being alive","Stay as long as you like"]},{icon:"💨",t:"Gratitude Breathing",d:"On each inhale find something to feel grateful for. On each exhale let go of what is not joy.",steps:["Inhale — find one genuine gratitude","Let it deepen the breath","Exhale — release what is not joy","Each breath: new gratitude","20 breaths — feel the shift"]}],routine:[{icon:"☀️",t:"Morning: Joy inventory",d:"Ask: 'What am I genuinely looking forward to today?' Follow that thread through the day.",time:"Morning · 2 min"},{icon:"🌙",t:"Evening: Moments of aliveness",d:"Write three moments today when you felt most alive — not most productive, but most alive.",time:"Evening · 3 min"},{icon:"🎵",t:"Daily: Dance or sing briefly",d:"Two minutes of dancing alone or singing in the shower keeps the body aligned with the consciousness.",time:"Daily · 2-5 min"}]},
+    600:{general:[{icon:"🌌",t:"Abide in stillness",d:"Peace is not something you do — it is what you are when thought subsides."},{icon:"🌟",t:"Be a presence for others",d:"Your role is not to teach but to embody. Your peace is medicine without any effort."},{icon:"🌊",t:"Continue without expectation",d:"There is nothing to attain. Simply be what you are and allow the unfolding."},{icon:"🙏",t:"Trust the process completely",d:"Trust is total at Peace. The path reveals itself as you walk."}],breathing:[{icon:"🌬️",t:"Non-Doing Breath",d:"Do not breathe — allow breathing to happen. The breath breathes itself. You are the witness.",steps:["Sit in stillness","Ask: who is breathing?","Notice: breathing happens on its own","Rest as the awareness that observes","Not controlling — witnessing"]},{icon:"💨",t:"Silence Between Breaths",d:"At the natural pause at the top and bottom of each breath, rest in the silence.",steps:["Breathe naturally","At top of inhale — pause and rest","Notice the silence","At bottom of exhale — pause and rest","Both pauses are the same peace"]}],routine:[{icon:"☀️",t:"Morning: Sit in silence for 20 minutes",d:"No guidance, no technique, no goal. Simply sit.",time:"Morning · 20 min"},{icon:"🌙",t:"Evening: Complete rest",d:"At 600, rest is alignment. Sleep early and completely.",time:"Evening"},{icon:"🌿",t:"Daily: Extended time in nature",d:"The stillness outside reflects the stillness within.",time:"Daily · 30+ min"}]}},
   "Spiritual":{
-    1000:{
-      general:[{icon:"∞",t:"You are already complete",d:"At Enlightenment there is nothing to improve and nowhere to go. The journey is over. Simply be."}],
-      breathing:[{icon:"🌬️",t:"All breath is sacred",d:"There is no technique at this level. Every breath is the universe breathing. Simply notice.",steps:["Simply breathe","Nothing more is needed"]}],
-      routine:[{icon:"✨",t:"Every moment is the practice",d:"Waking, eating, walking, sleeping — all are the same. There is no routine because there is no separation between practice and life.",time:"All of life"}],
-    },
-  },
+    1000:{general:[{icon:"∞",t:"You are already complete",d:"At Enlightenment there is nothing to improve and nowhere to go. Simply be."}],breathing:[{icon:"🌬️",t:"All breath is sacred",d:"There is no technique at this level. Every breath is the universe breathing.",steps:["Simply breathe","Nothing more is needed"]}],routine:[{icon:"✨",t:"Every moment is the practice",d:"Waking, eating, walking, sleeping — all are the same. There is no separation between practice and life.",time:"All of life"}]}},
 };
 
-function getSugData(lvl){
-  const m=lvl.mode;const s=allSuggestions[m];
-  if(!s)return{general:[],breathing:[],routine:[]};
-  if(s[lvl.log])return s[lvl.log];
-  const keys=Object.keys(s).map(Number).sort((a,b)=>a-b);
-  const closest=keys.reduce((a,b)=>Math.abs(b-lvl.log)<Math.abs(a-lvl.log)?b:a);
-  return s[closest]||{general:[],breathing:[],routine:[]};
-}
-
+function getSugData(lvl){const m=lvl.mode;const s=allSuggestions[m];if(!s)return{general:[],breathing:[],routine:[]};if(s[lvl.log])return s[lvl.log];const keys=Object.keys(s).map(Number).sort((a,b)=>a-b);const closest=keys.reduce((a,b)=>Math.abs(b-lvl.log)<Math.abs(a-lvl.log)?b:a);return s[closest]||{general:[],breathing:[],routine:[]};}
 function getReport(lvl){
-  const reports={
-    "Victim/Abuser":{strength:"You are aware enough to take this assessment — self-awareness is itself a sign of growth. The fact that you are seeking understanding shows a part of you that wants change.",challenge:"At this level, life feels like something happening to you rather than something you participate in. Survival feels threatened and others are often seen as obstacles.",pattern:"The dominant pattern is reactive — responding to external events from fear, anger, or collapse rather than inner stability."},
-    "Self-Empowerment":{strength:"You have crossed the critical threshold of 200 — one of the most significant leaps on the entire scale. You possess genuine inner resources and the capacity to navigate life's challenges.",challenge:"The primary growth edge is moving from personal empowerment to genuine care for others. The risk is using your strength primarily for personal gain rather than shared flourishing.",pattern:"The dominant pattern is proactive — you take responsibility for your outcomes and possess real agency. The next step is extending that agency outward in service of others."},
-    "Self-Realization":{strength:"You operate from a fundamentally positive orientation toward life and others. Love, understanding, and forgiveness are natural parts of your experience rather than aspirations.",challenge:"The primary edge is moving from personal to universal realisation — from 'I am doing well' to 'we are all one.' This requires releasing the last subtle forms of separation.",pattern:"The dominant pattern is expansive — your energy naturally uplifts those around you. The next step is deepening into states where the personal self begins to dissolve."},
-    "Spiritual":{strength:"You operate from a state of being that transcends ordinary human experience. Your presence is a gift to all those around you.",challenge:"At these levels, the language of challenge no longer applies. There is only deepening into what already is.",pattern:"The dominant pattern is radiance — you do not act so much as allow action to move through you."},
-  };
-  return reports[lvl.mode]||reports["Victim/Abuser"];
+  const r={"Victim/Abuser":{strength:"You are aware enough to take this assessment — self-awareness is itself a sign of growth. The fact that you are seeking understanding shows a part of you that wants change.",challenge:"At this level, life feels like something happening to you rather than something you participate in. Survival feels threatened and others are often seen as obstacles.",pattern:"The dominant pattern is reactive — responding to external events from fear, anger, or collapse rather than inner stability."},"Self-Empowerment":{strength:"You have crossed the critical threshold of 200 — one of the most significant leaps on the entire scale. You possess genuine inner resources and the capacity to navigate life's challenges.",challenge:"The primary growth edge is moving from personal empowerment to genuine care for others. The risk is using your strength primarily for personal gain rather than shared flourishing.",pattern:"The dominant pattern is proactive — you take responsibility for your outcomes and possess real agency. The next step is extending that agency outward in service of others."},"Self-Realization":{strength:"You operate from a fundamentally positive orientation toward life and others. Love, understanding, and forgiveness are natural parts of your experience rather than aspirations.",challenge:"The primary edge is moving from personal to universal realisation — from 'I am doing well' to 'we are all one.'",pattern:"The dominant pattern is expansive — your energy naturally uplifts those around you. The next step is deepening into states where the personal self begins to dissolve."},"Spiritual":{strength:"You operate from a state of being that transcends ordinary human experience. Your presence is a gift to all those around you.",challenge:"At these levels, the language of challenge no longer applies. There is only deepening into what already is.",pattern:"The dominant pattern is radiance — you do not act so much as allow action to move through you."}};
+  return r[lvl.mode]||r["Victim/Abuser"];
 }
 
 // ── CHART ──
@@ -562,7 +304,7 @@ const questions=[
 ];
 
 function closestLevel(score){return levels.reduce((a,b)=>Math.abs(b.log-score)<Math.abs(a.log-score)?b:a);}
-let qCurrent=0,qAnswers=[],qSelected=null;
+let qCurrent=0,qAnswers=[],qSelected=null,activeSugTab='general',lastResult=null;
 const TOTAL=questions.length;
 
 function renderQuiz(){
@@ -578,36 +320,47 @@ function renderQuiz(){
     '<button class="qbtn primary" id="qNext" onclick="qNext()" disabled>Next</button></div>';
   if(qAnswers[qCurrent]!==undefined)qPick(qAnswers[qCurrent],true);
 }
-
 function qPick(i,restore){qSelected=i;document.querySelectorAll('.opt').forEach((b,j)=>b.classList.toggle('selected',j===i));document.getElementById('qNext').disabled=false;if(!restore)qAnswers[qCurrent]=i;}
 function qNext(){if(qSelected===null)return;qAnswers[qCurrent]=qSelected;qCurrent++;renderQuiz();}
 function qBack(){if(qCurrent>0){qCurrent--;renderQuiz();}}
 
-let activeSugTab='general';
-function switchSugTab(tab,lvl){
-  activeSugTab=tab;
-  document.querySelectorAll('.sug-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
-  document.getElementById('sugContent').innerHTML=renderSugList(tab,lvl);
+function renderSugList(tab,lvl){
+  const data=getSugData(lvl);const items=data[tab]||[];
+  if(!items.length)return '<div style="color:var(--muted);font-size:13px;padding:12px 0;">No specific suggestions for this tab.</div>';
+  return items.map(s=>'<div class="sug-item"><div class="sug-icon">'+s.icon+'</div><div class="sug-body">'+
+    (tab==='routine'&&s.time?'<div class="routine-time">'+s.time+'</div>':'')+
+    '<div class="sug-title">'+s.t+'</div><div class="sug-desc">'+s.d+'</div>'+
+    (tab==='breathing'&&s.steps?'<div class="breath-steps">'+s.steps.map(st=>'<span class="breath-step">'+st+'</span>').join('')+'</div>':'')+
+    '</div></div>').join('');
 }
 
-function renderSugList(tab,lvl){
-  const data=getSugData(lvl);
-  const items=data[tab]||[];
-  if(!items.length)return '<div style="color:var(--muted);font-size:13px;">No specific suggestions for this tab at this level.</div>';
-  return items.map(s=>{
-    let extra='';
-    if(tab==='breathing'&&s.steps){
-      extra='<div class="breath-steps">'+s.steps.map(st=>'<span class="breath-step">'+st+'</span>').join('')+'</div>';
-    }
-    if(tab==='routine'&&s.time){
-      extra='<div class="routine-time">'+s.time+'</div>';
-    }
-    return '<div class="sug-item"><div class="sug-icon" style="background:rgba(255,255,255,0.05)">'+s.icon+'</div><div class="sug-body">'+
-      (tab==='routine'&&s.time?'<div class="routine-time">'+s.time+'</div>':'')+
-      '<div class="sug-title">'+s.t+'</div><div class="sug-desc">'+s.d+'</div>'+
-      (tab==='breathing'&&s.steps?'<div class="breath-steps">'+s.steps.map(st=>'<span class="breath-step">'+st+'</span>').join('')+'</div>':'')+
-    '</div></div>';
-  }).join('');
+function switchSugTab(tab){
+  activeSugTab=tab;
+  document.querySelectorAll('.sug-tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  if(lastResult)document.getElementById('sugContent').innerHTML=renderSugList(tab,lastResult);
+}
+
+function shareWhatsApp(lvl){
+  const msg=encodeURIComponent(
+    '🧠 *My Map of Consciousness Result*\n\n'+
+    '📊 Level: *'+lvl.log+' — '+lvl.level+'*\n'+
+    '🎭 Mode: '+lvl.mode+'\n'+
+    '💬 Emotion: '+lvl.emotion+'\n'+
+    '😊 Happiness Rate: '+lvl.happiness+'%\n'+
+    '💭 "'+lvl.drive+'"\n\n'+
+    '✨ Take the free quiz yourself:\n'+
+    'https://nssandeshrao.github.io/Map-Of-Consciousness\n\n'+
+    '_Based on Dr. David Hawkins\' Map of Consciousness_'
+  );
+  window.open('https://wa.me/?text='+msg,'_blank');
+}
+
+function copyResult(lvl){
+  const text='🧠 My Map of Consciousness Result\n\nLevel: '+lvl.log+' — '+lvl.level+'\nMode: '+lvl.mode+'\nEmotion: '+lvl.emotion+'\nHappiness: '+lvl.happiness+'%\n"'+lvl.drive+'"\n\nTake the quiz: https://nssandeshrao.github.io/Map-Of-Consciousness';
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn=document.getElementById('copyBtn');
+    if(btn){btn.textContent='✓ Copied!';setTimeout(()=>{btn.textContent='Copy result';},2500);}
+  });
 }
 
 function showQuizResult(){
@@ -616,6 +369,8 @@ function showQuizResult(){
   const total=qAnswers.reduce((s,ai,qi)=>s+questions[qi].opts[ai].score,0);
   const avg=Math.round(total/TOTAL);
   const lvl=closestLevel(avg);
+  lastResult=lvl;
+  activeSugTab='general';
   const mc=modeColors[lvl.mode];
   const report=getReport(lvl);
   const idx=levels.findIndex(l=>l.log===lvl.log);
@@ -623,41 +378,30 @@ function showQuizResult(){
   let nextBanner='';
   if(nextLvl){const nmc=modeColors[nextLvl.mode];nextBanner='<div><div class="section-title">Your next level</div><div class="next-level-banner" style="'+nmc.banner+'"><div class="nl-log">'+nextLvl.log+'</div><div class="nl-body"><div class="nl-label">Next milestone</div><div class="nl-level">'+nextLvl.level+'</div><div class="nl-desc">Emotion: '+nextLvl.emotion+' &nbsp;·&nbsp; '+nextLvl.happiness+'% happiness rate</div></div></div></div>';}
 
-  activeSugTab='general';
+  const shareCardHtml=
+    '<div class="share-card" style="background:'+lvl.bg+';color:#fff;">'+
+    '<div class="share-card-tag">Map of Consciousness · Dr. David Hawkins</div>'+
+    '<div class="share-card-main">'+
+      '<div class="share-card-log" style="color:'+lvl.accent+'">'+lvl.log+'</div>'+
+      '<div class="share-card-right">'+
+        '<div class="share-card-level">'+lvl.level+'</div>'+
+        '<div class="share-card-mode">'+lvl.mode+'</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="share-card-drive">"'+lvl.drive+'"</div>'+
+    '<div class="share-card-hap">'+
+      '<span style="font-size:10px;text-transform:uppercase;letter-spacing:0.06em;opacity:0.6;min-width:68px;">Happiness</span>'+
+      '<div class="sc-hap-track"><div class="sc-hap-fill" style="width:'+lvl.happiness+'%"></div></div>'+
+      '<span class="sc-hap-pct">'+lvl.happiness+'%</span>'+
+    '</div>'+
+    '<div class="share-card-stats">'+
+      [{k:'Emotion',v:lvl.emotion},{k:'Life-view',v:lvl.lifeView},{k:'Population',v:lvl.pop}]
+      .map(x=>'<div class="sc-stat"><span class="sc-stat-k">'+x.k+'</span><span class="sc-stat-v">'+x.v+'</span></div>').join('')+
+    '</div>'+
+    '<div class="share-card-footer">nssandeshrao.github.io/Map-Of-Consciousness</div>'+
+    '</div>';
+
   document.getElementById('qArea').innerHTML=
     '<div class="result-card">'+
     '<div class="res-top"><span class="res-log">'+lvl.log+'</span><span class="res-level">'+lvl.level+'</span><span class="res-badge" style="'+mc.badge+'">'+lvl.mode+'</span></div>'+
-    '<div class="res-drive">"'+lvl.drive+'"</div>'+
-    '<div class="hbar-row"><span class="hbar-lbl">Happiness</span><div class="hbar-track"><div class="hbar-fill" style="width:'+lvl.happiness+'%;background:'+mc.hap+'"></div></div><span class="hbar-pct">'+lvl.happiness+'%</span></div>'+
-    '<div class="res-attrs">'+[{k:'Emotion',v:lvl.emotion},{k:'Life-view',v:lvl.lifeView},{k:'God-view',v:lvl.godView},{k:'Process',v:lvl.process},{k:'Population',v:lvl.pop},{k:'Your score',v:avg}].map(x=>'<div class="res-attr"><span class="res-k">'+x.k+'</span><span class="res-v">'+x.v+'</span></div>').join('')+'</div>'+
-    '<div><div class="section-title">Assessment report</div><div class="report-block">'+
-    '<div class="report-row"><div class="report-icon" style="background:rgba(127,119,221,0.2);color:#b3b0ff">+</div><div><div class="report-label">Strength</div><div class="report-text">'+report.strength+'</div></div></div>'+
-    '<div class="report-row"><div class="report-icon" style="background:rgba(196,125,26,0.2);color:#ffcc80">!</div><div><div class="report-label">Challenge</div><div class="report-text">'+report.challenge+'</div></div></div>'+
-    '<div class="report-row"><div class="report-icon" style="background:rgba(26,158,117,0.2);color:#80cbc4">~</div><div><div class="report-label">Pattern</div><div class="report-text">'+report.pattern+'</div></div></div>'+
-    '</div></div>'+
-    nextBanner+
-    '<div><div class="section-title">How to raise your level</div>'+
-    '<div class="sug-tabs">'+
-    '<button class="sug-tab active" data-tab="general" onclick="switchSugTab(\'general\',levels['+idx+'])">💡 Suggestions</button>'+
-    '<button class="sug-tab" data-tab="breathing" onclick="switchSugTab(\'breathing\',levels['+idx+'])">🌬️ Breathing</button>'+
-    '<button class="sug-tab" data-tab="routine" onclick="switchSugTab(\'routine\',levels['+idx+'])">📅 Daily Routine</button>'+
-    '</div>'+
-    '<div class="suggestion-list" id="sugContent">'+renderSugList('general',lvl)+'</div></div>'+
-    '<div class="res-btns"><button class="qbtn" onclick="qRestart()">Retake quiz</button><button class="qbtn primary" onclick="showTab(\'chart\')">View on chart</button></div>'+
-    '</div>';
-
-  const cidx=levels.findIndex(l=>l.log===lvl.log);
-  if(cidx>=0)setLevel(cidx);
-}
-
-function qRestart(){qCurrent=0;qAnswers=[];qSelected=null;activeSugTab='general';renderQuiz();}
-function showTab(tab){
-  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['chart','quiz'][i]===tab));
-  document.getElementById('panel-chart').classList.toggle('visible',tab==='chart');
-  document.getElementById('panel-quiz').classList.toggle('visible',tab==='quiz');
-  if(tab==='quiz')renderQuiz();
-  if(tab==='chart')cursorLine.style.top=cursorTop(current)+'px';
-}
-</script>
-</body>
-</html>
+    '<div class="res-drive">"'+lvl.driv
